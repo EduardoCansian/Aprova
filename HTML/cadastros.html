@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>Cadastros Básicos</title>
+</head>
+<body>
+    <!-- Barra lateral -->
+    <aside class="aside-bar">
+        <header>
+            <p>Logo Site</p>
+        </header>
+        <!-- Botões principais do menu lateral -->
+        <div class="btn-aside-bar">
+            <button class="btn btn-side-bar"><span class="material-symbols-outlined">dashboard</span>Dashboard</button>
+            <button class="btn btn-side-bar"><span class="material-symbols-outlined">app_registration</span>Cadastros Básicos</button>
+            <button class="btn btn-side-bar"><span class="material-symbols-outlined">school</span>Matrículas</button>
+            <button class="btn btn-side-bar"><span class="material-symbols-outlined">fact_check</span>Lançamento de Notas</button>
+            <button class="btn btn-side-bar"><span class="material-symbols-outlined">insert_chart</span>Relatórios</button>
+        </div>
+        <!-- Rodapé da barra lateral -->
+        <div class="footer-aside-bar">
+            <button><span class="material-symbols-outlined">supervisor_account</span>Secretaria Escolar</button>
+            <p>&copy; Todos os Direitos Reservados</p>
+        </div>
+    </aside>
+    <!-- Conteúdo central -->
+    <main class="main-content">
+        <!-- Cabeçalho fixo no conteúdo principal -->
+        <header>
+            <div class="header-titles">
+                <h1>Gestão de Alunos</h1>
+                <!-- Menu suspenso para acessar o cadastro de outras entidades -->
+                <select name="options" id="options-register">
+                    <option value="value1">Gestão de Alunos</option>
+                    <option value="value2">Gestão de Professores</option>
+                    <option value="value3">Gestão de Turmas</option>
+                    <option value="value4">Gestão de Disciplinas</option>
+                </select>
+                <p>Registro acadêmico oficial e controle de cadastro unificado do Polo Central</p>
+            </div>
+            <div class="header-actions">
+                <input type="search" id="search" placeholder="Pesquisar por nome ou CPF..." >
+                <button><span class="material-symbols-outlined">person_add</span>Novo Aluno</button>
+            </div>
+        </header>
+        <!-- Indicadores para listra informações -->
+        <div class="indicators">
+            <p>Alunos cadastrados</p>
+            <p>1/1</p>
+            <span class="material-symbols-outlined">person_raised_hand</span>
+        </div>
+        <!-- Filtros da tabela + botão para ordenar os dados -->
+        <div class="filter-table">
+            <select name="dropdown" id="dropdown-order">
+                <option value="value1">ID - Crescente</option>
+                <option value="value1">ID - Decrescente</option>
+                <option value="value1">A - Z</option>
+                <option value="value1">Z - A</option>
+            </select>
+            <button><span class="material-symbols-outlined">filter_alt</span>Filtros</button>
+        </div>
+        <!-- Tabela para exibir os dados (alunos, professores, disciplinas, turmas) -->
+        <div class="table"> 
+            <table>
+                <!-- Cabeçalho da tabela -->
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOME DO ALUNO</th>
+                        <th>CPF</th>
+                        <th>E-MAIL</th>
+                        <th>NASCIMENTO</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </thead>
+                <!-- Corpo da tabela -->
+                <tbody>
+                    <tr>
+                        <td>#1042</td>
+                        <td>Joãozinho Silva</td>
+                        <td>384.921.840-12</td>
+                        <td>joaozinho.silva@escola.br</td>
+                        <td>15/04/2011</td>
+                        <td>
+                            <button><span class="material-symbols-outlined">edit</span></button>
+                            <button><span class="material-symbols-outlined">delete</span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Rodapé da tabela, onde fica o botão de avançar/voltar -->
+        <div class="footer-table">
+            <button><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
+            <button>1</button>
+            <button><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+        </div>
+    </main>
+</body>
+</html>
