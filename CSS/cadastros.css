@@ -1,0 +1,265 @@
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    margin: 0;
+    background-color: #e6e6e6;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border: 0;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+    transition: 0.3s ease-in-out;
+}
+
+.aside-bar {
+    flex-shrink: 0;
+    background-color: #003361;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aside-bar p {
+    color: whitesmoke;
+}
+
+img {
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.header-logo {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 10px;
+    align-self: flex-start;
+}
+
+.header-logo p {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.btn-aside-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 40px;
+}
+
+.btn-action-side-bar {
+    color: whitesmoke;
+    background: transparent;
+}
+
+.btn-action-side-bar:hover {
+    background: #294660;
+    padding-left: 15px;
+    transition: 0.4s ease-in-out;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, 0.15); /* Fundo branco translúcido */
+    margin: 0 10px; /* Descolar das bordas laterais do menu */
+    border: none; /* Remover a borda direita azulada */
+}
+
+.footer-aside-bar {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-aside-bar p {
+    padding: 10px;
+}
+
+.main-content {
+    width: 100%;
+    max-width: 2000px;
+    margin: 15px;
+}
+
+.header-menu-action {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+}
+
+select {
+    padding: 5px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #94a0a9;
+}
+
+.select-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.header-actions input {
+    width: 300px;
+    background-color: #003361;
+    color: whitesmoke;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.header-actions input::placeholder {
+    color: whitesmoke;
+}
+
+.btn-add-entity {
+    background-color: #0d9b8b;
+    color: white;
+}
+
+.indicators {
+    background-color: white;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.count {
+    width: 230px;
+}
+
+.count p {
+    
+    margin: 0;
+}
+
+.numbers {
+    font-weight: 600;
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+.icon-indicators {
+    background-color: #003361;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.filter-table {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.table {
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+table {
+    width: 100%;
+    background-color: white;
+}
+
+thead {
+    background-color: #0034615d;
+    color: #3e3e3e;
+}
+
+tr {
+    display: flex;
+    justify-content: space-around;
+}
+
+td {
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    font-size: 12px;
+    color: #5f6674; 
+    letter-spacing: 0.5px;
+    text-align: left;
+    padding: 15px 10px;
+    /* border-bottom: 2px solid #eef2f5;  */
+}
+tbody {
+    background-color: white;
+    color: #333;
+}
+
+td, th {
+    padding: 10px;
+}
+
+.btn-action-table {
+    background: transparent;
+    border: 0;
+    color: #333;
+    border-radius: 10px;
+}
+
+.btn-action-table:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+    background-color: #94a0a9;
+}
+
+.footer-table {
+    align-self: flex-end;
+    display: flex;
+}
+
+.btn-footer {
+    background: transparent;
+    border: 0;
+    border-radius: 10px;
+}
+
+.btn-footer:hover{
+    cursor: pointer;
+    background-color: #a4c1d984;
+    transition: 0.3s ease-in-out;
+}
