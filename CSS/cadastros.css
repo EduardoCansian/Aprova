@@ -263,3 +263,131 @@ td, th {
     background-color: #a4c1d984;
     transition: 0.3s ease-in-out;
 }
+
+/* Modal para cadastrar entidades */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(3px);
+    
+}
+
+.form-add {
+    display: block;
+    margin: auto;
+    width: auto;
+    max-width: 50%;
+    max-height: 90%;
+    border-radius: 10px;
+    margin-top: 15vh;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    background-color: #e7e6e6;
+    border: 1px solid #3333335c;
+}
+
+.close{
+    position: absolute;
+    cursor: pointer;
+    transition: 0.3s;
+    color: rgb(206, 25, 25);
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.close:hover {
+    color: rgb(243, 75, 75);
+    transform: scale(1.1);
+}
+
+.close-box {
+    display: flex;
+    justify-content: end;
+    margin-right: 15px;
+}
+
+.header-form {
+    margin-left: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    padding: 15px;
+}
+
+h3 {
+    margin-bottom: 0;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.input-cpf-nascimento {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    gap: 30px;
+}
+
+.input-cpf-nascimento, .input-box {
+    flex: 1;
+}
+
+.form-add input {
+    margin-top: 3px;
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.btn-cadastro {
+    display: flex;
+    justify-content: end;
+    background-color: #5f667435;
+    border-radius: 0px 0px 10px 10px;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.btn-cancel, .btn-save {
+    padding: 7px;
+    margin: 5px;
+}
+
+.btn-cancel:hover {
+    background-color: rgb(200, 46, 46);
+    color: white;
+    transition: 0.4s ease-in-out;
+    /* transform: scale(1.1); */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #003361;
+    color: whitesmoke;
+}
+
+p {
+    margin: 0;
+}
+
+.input-box p {
+    font-weight: 600;
+    color: #333;
+}

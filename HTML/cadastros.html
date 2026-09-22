@@ -109,6 +109,42 @@
             </div>
         </div>
     </main>
+    <div class="modal">
+        <div class="form-add">
+            <div class="close-box">
+                <span class="close">&times;</span>
+            </div>
+            <div class="header-form">
+                <h3>Cadastrar Novo Aluno</h3>
+                <p>Insira os dados cadastrais básicos do estudante para emissão de prontuário acadêmico.</p>
+            </div>
+
+            <div class="input-container">
+                <div class="input-box">
+                    <p>Nome Completo*</p>
+                    <input id="nome" type="text" placeholder="ex. João Victor">
+                </div>
+                <div class="input-cpf-nascimento">
+                    <div class="input-box">
+                        <p>CPF*</p>
+                        <input id="cpf" type="text" placeholder="000.000.000-00" maxlength="14">
+                    </div>
+                    <div class="input-box">
+                        <p>Data de Nasimento*</p>
+                        <input id="data-nascimento" type="date" placeholder="DD/MM/AAAA">
+                    </div>
+                </div>
+                <div class="input-box">
+                    <p>E-mail*</p>
+                    <input id="email" type="email" placeholder="email@exemplo.com">
+                </div>
+            </div>
+            <div class="btn-cadastro">
+                <button class="btn btn-cancel">Cancelar</button>
+                <button class="btn btn-save"><span class="material-symbols-outlined">check</span>Salvar Cadastro</button>
+            </div>
+        </div>
+    </div>
     <script src="/JS/cadastros.js"></script>
 </body>
 </html>
