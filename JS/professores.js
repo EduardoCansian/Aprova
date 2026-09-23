@@ -1,23 +1,21 @@
 // Função para buscar os alunos no banco de dados
-async function carregarAlunos() {
+async function carregarProfessores() {
     try {
-        const resposta = await fetch('http://localhost:3000/alunos'); //Rota do servidor
-        const alunos = await resposta.json(); // Armazenando os dados dos alunos no formato json na variável alunos
+        const resposta = await fetch('http://localhost:3000/professores'); //Rota do servidor
+        const professores = await resposta.json(); // Armazenando os dados dos professores no formato JSON na variável professores
 
         const tbody = document.querySelector('tbody'); // Acessando a tabela
         tbody.innerHTML = ''; //Limpando os dados teste
 
-        alunos.forEach(aluno => {
-            // Formatando data para o padrão brasileiro
-            const dataFormatada = new Date(aluno.data_nascimento).toLocaleDateString('pt-BR');
+        professores.forEach(professor => {
             // Variável criada para receber todo o conteúdo nas tags HTML
             const linha = ` 
                 <tr>
-                    <td>#${aluno.id_aluno}</td>
-                    <td>${aluno.nome}</td>
-                    <td>${aluno.cpf}</td>
-                    <td>${aluno.email}</td>
-                    <td>${dataFormatada}</td>
+                    <td>#${professor.id_professor}</td>
+                    <td>${professor.nome}</td>
+                    <td>${professor.cpf}</td>
+                    <td>${professor.email}</td>
+                    <td>${professor.especialidade}</td>
                     <td>
                         <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
                         <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
@@ -28,14 +26,14 @@ async function carregarAlunos() {
         });
 
     } catch (error) { // Tratamento de erro personalizado
-        console.error('Erro ao buscar Alunos:', error)
+        console.error('Erro ao buscar Professores:', error)
     }
 }
 
 // Chamando a função ao carregar a página
-document.addEventListener('DOMContentLoaded', carregarAlunos);
+document.addEventListener('DOMContentLoaded', carregarProfessores);
 
-// Ao clicar no botão de "+ Novo Aluno" exibirá um modal oculto com um formulário
+// Ao clicar no botão de "+ Novo Professor" exibirá um modal oculto com um formulário
 const btnAdd = document.querySelector('.btn-add-entity');
 const modalContent = document.querySelector('.modal');
 const close = document.querySelector('.close');
@@ -77,38 +75,41 @@ const btnSaveRegister = document.querySelector('.btn-save');
 btnSaveRegister.onclick = async function() {
     const nome = document.getElementById('nome').value;
     const cpf = document.getElementById('cpf').value;
-    const dataNascimento = document.getElementById('data-nascimento').value;
+    const especialidade = document.getElementById('especialidade').value;
     const email = document.getElementById('email').value;
 
-    if(!nome || !cpf || !dataNascimento || !email) {
+    if(!nome || !cpf || !especialidade || !email) {
         alert('Por favor, preencha todos os campos obrigatórios');
         return;
     }
 
-    const novoAluno = {
+    // Monta o pacote no formato JSON idêntico ao que o Node espera
+    const novoProfessor = {
         nome: nome,
         cpf: cpf,
-        data_nascimento: dataNascimento,
+        especialidade: especialidade,
         email: email
     };
 
     try {
-        const resposta = await fetch('http://localhost:3000/alunos', {
+        // Faz o envio (POST) para a rota do back-end
+        const resposta = await fetch('http://localhost:3000/professores', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(novoAluno)
+            body: JSON.stringify(novoProfessor)
         });
 
         if(resposta.ok) {
+            // Limpa os campos para o próximo cadastro
             document.getElementById('nome').value = '';
             document.getElementById('cpf').value = '';
-            document.getElementById('data-nascimento').value = '';
+            document.getElementById('especialidade').value = '';
             document.getElementById('email').value = '';
 
             closeModal();
-            carregarAlunos();
+            carregarProfessores(); //Atualiza a tabela na mesma hora
 
             alert('Cadastro salvo com sucesso!');
         } else {

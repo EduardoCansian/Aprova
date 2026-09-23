@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/CSS/cadastros.css">
-    <title>Cadastros Básicos</title>
+    <title>Cadastros Básicos - Professor</title>
 </head>
 <body>
     <!-- Barra lateral -->
@@ -34,11 +35,11 @@
         <!-- Cabeçalho fixo no conteúdo principal -->
         <header class="header-menu-action">
             <div class="select-menu">
-                <h1>Gestão de Alunos</h1>
+                <h1>Gestão de Professores</h1>
                 <!-- Menu suspenso para acessar o cadastro de outras entidades -->
                 <select name="options" id="options-register">
-                    <option value="cadastros.html" selected>Gestão de Alunos</option>
-                    <option value="professores.html">Gestão de Professores</option>
+                    <option value="cadastros.html">Gestão de Alunos</option>
+                    <option value="professores.html" selected>Gestão de Professores</option>
                     <option value="turmas.html">Gestão de Turmas</option>
                     <option value="disciplinas.html">Gestão de Disciplinas</option>
                 </select>
@@ -48,18 +49,18 @@
             </div> -->
             <div class="header-actions">
                 <input type="search" id="search" placeholder="Pesquisar por nome ou CPF..." >
-                <button class="btn btn-add-entity"><span class="material-symbols-outlined">person_add</span>Novo Aluno</button>
+                <button class="btn btn-add-entity"><span class="material-symbols-outlined">person_add</span>Novo Professor</button>
             </div>
         </header>
         <!-- Indicadores para listra informações -->
         <div class="indicators">
             <div class="count">
-                <p>ALUNOS CADASTRADOS</p>
+                <p>PROFESSORES CADASTRADOS</p>
                 <p class="numbers">1/1</p>
             </div>
             
             <div class="icon-indicators">
-                <span class="material-symbols-outlined">person_raised_hand</span>
+                <i class="bi bi-person-video3"></i>
             </div>
         </div>
         <!-- Filtros da tabela + botão para ordenar os dados -->
@@ -79,21 +80,21 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>NOME DO ALUNO</th>
+                        <th>NOME DO PROFESSOR</th>
                         <th>CPF</th>
                         <th>E-MAIL</th>
-                        <th>NASCIMENTO</th>
+                        <th>ESPECIALIDADE</th>
                         <th>AÇÕES</th>
                     </tr>
                 </thead>
                 <!-- Corpo da tabela -->
                 <tbody>
                     <tr>
-                        <td>#1042</td>
-                        <td>Joãozinho Silva</td>
-                        <td>384.921.840-12</td>
-                        <td>joaozinho.silva@escola.br</td>
-                        <td>15/04/2011</td>
+                        <td>#1022</td>
+                        <td>Marlon da Silva Machado </td>
+                        <td>820.721.271-30</td>
+                        <td>marlon.silva.m@escola.edu.br</td>
+                        <td>Matemática</td>
                         <td>
                             <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
                             <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
@@ -115,8 +116,8 @@
                 <span class="close">&times;</span>
             </div>
             <div class="header-form">
-                <h3>Cadastrar Novo Aluno</h3>
-                <p>Insira os dados cadastrais básicos do estudante para emissão de prontuário acadêmico.</p>
+                <h3>Cadastrar Novo Professor</h3>
+                <p>Insira os dados cadastrais básicos do docente.</p>
             </div>
 
             <div class="input-container">
@@ -124,14 +125,14 @@
                     <p>Nome Completo*</p>
                     <input id="nome" type="text" placeholder="ex. João Victor">
                 </div>
-                <div class="input-cpf-nascimento">
+                <div class="input-cpf-especialidade">
                     <div class="input-box">
                         <p>CPF*</p>
                         <input id="cpf" type="text" placeholder="000.000.000-00" maxlength="14">
                     </div>
                     <div class="input-box">
-                        <p>Data de Nasimento*</p>
-                        <input id="data-nascimento" type="date" placeholder="DD/MM/AAAA">
+                        <p>Especialidade*</p>
+                        <input id="especialidade" type="text" placeholder="Português, História, Física...">
                     </div>
                 </div>
                 <div class="input-box">
@@ -145,6 +146,6 @@
             </div>
         </div>
     </div>
-    <script src="/JS/cadastros.js"></script>
+    <script src="/JS/professores.js"></script>
 </body>
 </html>
