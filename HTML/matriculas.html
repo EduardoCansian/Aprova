@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/matriculas.css">
+    <title>Matrículas</title>
+</head>
+<body>
+    <!-- Barra lateral -->
+    <aside class="aside-bar">
+        <header class="header-logo">
+            <img src="/img/Aprova_logo-removebg-preview.png" alt="logo" width="50px">
+            <p>Aprova</p>
+        </header>
+        <!-- Botões principais do menu lateral -->
+        <div class="btn-aside-bar">
+            <button class="btn btn-action-side-bar" onclick="window.location.href='dashboard.html'"><span class="material-symbols-outlined">dashboard</span>Dashboard</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='cadastros.html'"><span class="material-symbols-outlined">app_registration</span>Cadastros Básicos</button>
+            <button class="btn btn-action-side-bar active" onclick="window.location.href='matriculas.html'"><span class="material-symbols-outlined">school</span>Matrículas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='notas.html'"><span class="material-symbols-outlined">fact_check</span>Lançamento de Notas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='boletim.html'"><span class="material-symbols-outlined">insert_chart</span>Relatórios</button>
+        </div>
+        <!-- Rodapé da barra lateral -->
+        <div class="footer-aside-bar">
+            <button class="btn btn-action-side-bar" id="btn-footer"><span class="material-symbols-outlined">supervisor_account</span>Secretaria Escolar</button>
+            <p>&copy; Todos os Direitos Reservados</p>
+        </div>
+    </aside>
+    <!-- Conteúdo central -->
+    <main class="main-content">
+        <!-- Cabeçalho fixo no conteúdo principal -->
+        <header class="header-menu-action">
+            <div class="select-menu-matricula">
+                <h1>Gestão de Matrículas</h1>
+                <div>
+                    <p>Controle acadêmico de vínculos de matrículas, turmas e vigências contratual discente.</p>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <input type="search" id="search" placeholder="Pesquisar por nome ou CPF..." >
+                <button class="btn btn-add-entity"><span class="material-symbols-outlined">contextual_token_add</span>Nova Matrícula</button>
+            </div>
+        </header>
+        <!-- Indicadores para listra informações -->
+         <div class="indicator-container">
+            <div class="indicators">
+                <div class="count">
+                    <p>MATRÍCULAS ATIVAS</p>
+                    <p class="numbers">1/1</p>
+                </div>
+                
+                <div class="icon-indicators">
+                    <span class="material-symbols-outlined">id_card_2</span>
+                </div>
+            </div>
+            <div class="indicators">
+                <div class="count">
+                    <p>ANO LETIVO</p>
+                    <p class="numbers">2026</p>
+                </div>
+                
+                <div class="icon-indicators">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                </div>
+            </div>
+         </div>
+        <!-- Filtros da tabela + botão para ordenar os dados -->
+        <div class="filter-table">
+            <select name="dropdown" id="dropdown-order">
+                <option value="value1">ID - Crescente</option>
+                <option value="value1">ID - Decrescente</option>
+                <option value="value1">A - Z</option>
+                <option value="value1">Z - A</option>
+            </select>
+            <button class="btn"><span class="material-symbols-outlined">filter_alt</span>Filtros</button>
+        </div>
+        <!-- Tabela para exibir os dados (alunos, professores, disciplinas, turmas) -->
+        <div class="table"> 
+            <table>
+                <!-- Cabeçalho da tabela -->
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOME DO ALUNO</th>
+                        <th>TURMA VINCULADA</th>
+                        <th>DATA</th>
+                        <th>STATUS</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </thead>
+                <!-- Corpo da tabela -->
+                <tbody>
+                    <tr>
+                        <td>#MAT-2026-001</td>
+                        <td>Joãozinho Silva</td>
+                        <td>9° Ano A</td>
+                        <td>01/02/2026</td>
+                        <td>Ativo</td>
+                        <td>
+                            <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
+                            <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Rodapé da tabela, onde fica o botão de avançar/voltar -->
+            <div class="footer-table">
+                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
+                <button class="btn-footer">1</button>
+                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+            </div>
+        </div>
+    </main>
+    <div class="modal">
+        <div class="form-add">
+            <div class="close-box">
+                <span class="close">&times;</span>
+            </div>
+            <div class="header-form">
+                <h3>Cadastrar Nova Matrícula</h3>
+                <p>Selecione o discente e vincule a uma respectiva turma.</p>
+            </div>
+
+            <div class="input-container">
+                <div class="input-box" id="input-select-aluno">
+                    <p>SELECIONAR ALUNO*</p>
+                    <select name="aluno" id="aluno">Selecione</select>
+                </div>
+               
+                <div class="input-box" id="vinc-turma">
+                    <p>TURMA VINCULADA*</p>
+                    <select name="turma-vinculada" id="turma"></select>
+                </div>
+                
+                <div class="input-data-status">
+                    <div class="input-box" id="input-matricula">
+                        <p>DATA DA MATRÍCULA*</p>
+                        <input id="data-matricula" type="date" placeholder="DD/MM/AAAA">
+                    </div>
+                    <div class="input-box" id="input-status">
+                        <p>STATUS*</p>
+                        <select name="status" id="status">
+                            <option value="Ativo" selected>Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                            <option value="Trancado">Trancado</option>
+                        </select>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="btn-cadastro">
+                <button class="btn btn-cancel">Cancelar</button>
+                <button class="btn btn-save"><span class="material-symbols-outlined">check</span>Salvar Matrícula</button>
+            </div>
+        </div>
+    </div>
+    <script src="/JS/matriculas.js"></script>
+</body>
+</html>
