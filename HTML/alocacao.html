@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/matriculas.css">
+    <title>Alocação de Aulas</title>
+</head>
+<body>
+    <!-- Barra lateral -->
+    <aside class="aside-bar">
+        <header class="header-logo">
+            <img src="/img/Aprova_logo-removebg-preview.png" alt="logo" width="50px">
+            <p>Aprova</p>
+        </header>
+        <!-- Botões principais do menu lateral -->
+        <div class="btn-aside-bar">
+            <button class="btn btn-action-side-bar" onclick="window.location.href='dashboard.html'"><span class="material-symbols-outlined">dashboard</span>Dashboard</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='cadastros.html'"><span class="material-symbols-outlined">app_registration</span>Cadastros Básicos</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='matriculas.html'"><span class="material-symbols-outlined">school</span>Matrículas</button>
+            <button class="btn btn-action-side-bar active" onclick="window.location.href='alocacao.html'"><span class="material-symbols-outlined">assignment</span>Alocação de Aulas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='notas.html'"><span class="material-symbols-outlined">fact_check</span>Lançamento de Notas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='boletim.html'"><span class="material-symbols-outlined">insert_chart</span>Relatórios</button>
+        </div>
+        <!-- Rodapé da barra lateral -->
+        <div class="footer-aside-bar">
+            <button class="btn btn-action-side-bar" id="btn-footer"><span class="material-symbols-outlined">supervisor_account</span>Secretaria Escolar</button>
+            <p>&copy; Todos os Direitos Reservados</p>
+        </div>
+    </aside>
+    <!-- Conteúdo central -->
+    <main class="main-content">
+        <!-- Cabeçalho fixo no conteúdo principal -->
+        <header class="header-menu-action">
+            <div class="select-menu-matricula">
+                <h1>Alocação de Aulas</h1>
+                <div>
+                    <p>Distribuição do corpo docente por matriz curricular e turmas ativas..</p>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <input type="search" id="search" placeholder="Pesquisar por turma, disciplina ou professor..." >
+                <button class="btn btn-add-entity"><span class="material-symbols-outlined">assignment_add</span>Nova Alocação</button>
+            </div>
+        </header>
+        <!-- Indicadores para listra informações -->
+         <div class="indicator-container">
+            <div class="indicators">
+                <div class="count">
+                    <p>TOTAL DE ALOCAÇÕES</p>
+                    <p class="numbers">3</p>
+                </div>
+                
+                <div class="icon-indicators">
+                    <span class="material-symbols-outlined">assignment_turned_in</span>
+                </div>
+            </div>
+            <div class="indicators">
+                <div class="count">
+                    <p>PROFESSORES ALOCADOS</p>
+                    <p class="numbers">2</p>
+                </div>
+                
+                <div class="icon-indicators">
+                    <span class="material-symbols-outlined">clinical_notes</span>
+                </div>
+            </div>
+         </div>
+        <!-- Filtros da tabela + botão para ordenar os dados -->
+        <div class="filter-table">
+            <select name="dropdown" id="dropdown-order">
+                <option value="value1">ID - Crescente</option>
+                <option value="value1">ID - Decrescente</option>
+                <option value="value1">A - Z</option>
+                <option value="value1">Z - A</option>
+            </select>
+            <button class="btn"><span class="material-symbols-outlined">filter_alt</span>Filtros</button>
+        </div>
+        <!-- Tabela para exibir os dados (alunos, professores, disciplinas, turmas) -->
+        <div class="table"> 
+            <table>
+                <!-- Cabeçalho da tabela -->
+                <thead>
+                    <tr>
+                        <th>TURMA</th>
+                        <th>DISCIPLINA</th>
+                        <th>PROFESSOR RESPONSÁVEL</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </thead>
+                <!-- Corpo da tabela -->
+                <tbody>
+                    <tr>
+                        <td>9° Ano A</td>
+                        <td>Língua Portuguesa</td>
+                        <td>Carlos Eduardo Santos</td>
+                        <td>
+                            <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
+                            <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Rodapé da tabela, onde fica o botão de avançar/voltar -->
+            <div class="footer-table">
+                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
+                <button class="btn-footer">1</button>
+                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+            </div>
+        </div>
+    </main>
+    <div class="modal">
+        <div class="form-add">
+            <div class="close-box">
+                <span class="close">&times;</span>
+            </div>
+            <div class="header-form">
+                <h3>Cadastrar Nova Alocação</h3>
+                <p>Selecione a turma, disciplina e o docente responsável.</p>
+            </div>
+            <div class="input-container">
+                <div class="input-box" id="turma">
+                    <p>Turma*</p>
+                    <select name="turma" id="input-select-turma">Selecione</select>
+                </div>
+               
+                <div class="input-box" id="disciplina">
+                    <p>Disciplina*</p>
+                    <select name="disciplina" id="input-select-disciplina"></select>
+                </div>
+    
+                <div class="input-box" id="professor-resp">
+                    <p>Professor Responsável*</p>
+                    <select name="prof-responsavel" id="input-select-professor"></select>
+                </div>
+            </div>
+            <div class="btn-cadastro">
+                <button class="btn btn-cancel">Cancelar</button>
+                <button class="btn btn-save"><span class="material-symbols-outlined">check</span>Salvar Alocação</button>
+            </div>
+        </div>
+    </div>
+    <script src="/JS/alocacao.js"></script>
+</body>
+</html>
