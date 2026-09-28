@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/notas.css">
+    <title>Lançamento de Notas</title>
+</head>
+<body>
+    <!-- Barra lateral -->
+    <aside class="aside-bar">
+        <header class="header-logo">
+            <img src="/img/Aprova_logo-removebg-preview.png" alt="logo" width="50px">
+            <p>Aprova</p>
+        </header>
+        <!-- Botões principais do menu lateral -->
+        <div class="btn-aside-bar">
+            <button class="btn btn-action-side-bar" onclick="window.location.href='dashboard.html'"><span class="material-symbols-outlined">dashboard</span>Dashboard</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='cadastros.html'"><span class="material-symbols-outlined">app_registration</span>Cadastros Básicos</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='matriculas.html'"><span class="material-symbols-outlined">school</span>Matrículas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='alocacao.html'"><span class="material-symbols-outlined">assignment</span>Alocação de Aulas</button>
+            <button class="btn btn-action-side-bar active" onclick="window.location.href='notas.html'"><span class="material-symbols-outlined">fact_check</span>Lançamento de Notas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='boletim.html'"><span class="material-symbols-outlined">insert_chart</span>Relatórios</button>
+        </div>
+        <!-- Rodapé da barra lateral -->
+        <div class="footer-aside-bar">
+            <button class="btn btn-action-side-bar" id="btn-footer"><span class="material-symbols-outlined">supervisor_account</span>Secretaria Escolar</button>
+            <p>&copy; Todos os Direitos Reservados</p>
+        </div>
+    </aside>
+    <!-- Conteúdo central -->
+    <main class="main-content">
+        <!-- Cabeçalho fixo no conteúdo principal -->
+        <header class="header-menu-action">
+            <div class="select-menu-matricula">
+                <h1>Lançamento de Notas e Frequência</h1>
+                <div>
+                    <p>Selecione a turma e o período para registrar as avaliações e faltas</p>
+                </div>
+            </div>
+            <div class="selects">
+                <div class="select-box">
+                    <div class="header-select">
+                        <span class="material-symbols-outlined">groups</span>
+                        <p>TURMA</p>
+                    </div>
+                    <select name="turma" id="select-turma"></select>
+                </div>
+                <div class="select-box">
+                    <div class="header-select">
+                        <span class="material-symbols-outlined">menu_book</span>
+                        <p>DISCIPLINA</p>
+                    </div>
+                    <select name="disciplina" id="select-disciplina"></select>
+                </div>
+               <div class="select-box">
+                    <div class="header-select">
+                        <span class="material-symbols-outlined">book_6</span>
+                        <p>AVALIAÇÃO</p>
+                    </div>
+                    <select name="avaliacao" id="select-avaliacao">
+                        <option value="" disabled selected>Selecione...</option>
+                        <option value="1° Bimestre">1° Bimestre</option>
+                        <option value="2° Bimestre">2° Bimestre</option>
+                        <option value="3° Bimestre">3° Bimestre</option>
+                        <option value="4° Bimestre">4° Bimestre</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+        <div class="header-table">
+            <p>Caderno de Notas e Faltas</p>
+            <p>Pressione [Tab] ou [Enter] para navegar entre as células.</p>
+        </div>
+        <!-- Tabela para exibir os alunos e preencher as notas e faltas -->
+        <div class="table"> 
+            <table>
+                <!-- Cabeçalho da tabela -->
+                <thead>
+                    <tr>
+                        <th>NOME DO ALUNO</th>
+                        <th>NOTAS (0,0 a 10,0)</th>
+                        <th>TOTAL DE FALTAS</th>
+                    </tr>
+                </thead>
+                <!-- Corpo da tabela -->
+                <tbody>
+                    <tr>
+                        <td>Vazio</td>
+                        <td>Vazio</td>
+                        <td>Vazio</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Rodapé da tabela, onde fica os botões de Descartar e Salvar Lançamento -->
+            <div class="footer-table">
+                <button class="btn btn-cancel"><span class="material-symbols-outlined">cancel</span>Descartar</button>
+                <button class="btn btn-save"><span class="material-symbols-outlined">save</span>Salvar Lançamento</button>
+            </div>
+        </div>
+    </main>
+    <script src="/JS/notas.js"></script>
+</body>
+</html>
