@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/boletim.css">
+    <title>Relatórios</title>
+</head>
+<body>
+    <!-- Barra lateral -->
+    <aside class="aside-bar">
+        <header class="header-logo">
+            <img src="/img/Aprova_logo-removebg-preview.png" alt="logo" width="50px">
+            <p>Aprova</p>
+        </header>
+        <!-- Botões principais do menu lateral -->
+        <div class="btn-aside-bar">
+            <button class="btn btn-action-side-bar" onclick="window.location.href='dashboard.html'"><span class="material-symbols-outlined">dashboard</span>Dashboard</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='cadastros.html'"><span class="material-symbols-outlined">app_registration</span>Cadastros Básicos</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='matriculas.html'"><span class="material-symbols-outlined">school</span>Matrículas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='alocacao.html'"><span class="material-symbols-outlined">assignment</span>Alocação de Aulas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='notas.html'"><span class="material-symbols-outlined">fact_check</span>Lançamento de Notas</button>
+            <button class="btn btn-action-side-bar active" onclick="window.location.href='boletim.html'"><span class="material-symbols-outlined">insert_chart</span>Relatórios</button>
+        </div>
+        <!-- Rodapé da barra lateral -->
+        <div class="footer-aside-bar">
+            <button class="btn btn-action-side-bar" id="btn-footer"><span class="material-symbols-outlined">supervisor_account</span>Secretaria Escolar</button>
+            <p>&copy; Todos os Direitos Reservados</p>
+        </div>
+    </aside>
+    <!-- Conteúdo central -->
+    <main class="main-content">
+        <!-- Cabeçalho fixo no conteúdo principal -->
+        <header class="header-menu-action">
+            <div class="select-menu-matricula">
+                <h1>Boletim Escolar</h1>
+                <div>
+                    <p>Documento oficial de rendimento pedagógico, frequência e apuração final de reultados do discente</p>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <button class="btn btn-send-email"><span class="material-symbols-outlined">mail</span>Enviar por E-mail</button>
+                <button class="btn btn-add-entity"><span class="material-symbols-outlined">print</span>Imprimir / Exportar PDF</button>
+            </div>
+        </header>
+        <!-- Indicadores para listra informações -->
+        <div class="indicators">
+            <div class="header-indicator">
+                <div class="icon-indicators">
+                    <p>JS</p>
+                </div>
+                <div class="info-student">
+                    <p>Joãozinho Silva</p>
+                    <p id="cpf-aluno">CPF: 111.111.111-11</p>
+                </div>
+                <div class="status">
+                    <p>MATRÍCULA ATIVA</p>
+                </div>
+            </div>
+            <div class="body-indicator">
+                <div class="matricula">
+                    <div class="label">
+                        <span class="material-symbols-outlined">tag</span>
+                        <p>MATRÍCULA</p>
+                    </div>
+                    <p id="display-matricula">0</p>
+                </div>
+                <div class="turma">
+                    <div class="label">
+                        <span class="material-symbols-outlined">groups</span>
+                        <p>TURMA</p>
+                    </div>
+                    <p id="display-turma">****</p>
+                </div>
+                <div class="ano-letivo">
+                    <div class="label">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        <p>ANO LETIVO</p>
+                    </div>
+                    <p id="display-ano-letivo">0000</p>
+                </div>
+            </div>
+        </div>
+         
+        <div class="header-table">
+            <div class="title-table">
+                <span class="material-symbols-outlined">patient_list</span>
+                <p>Quadro de notas do discente</p>
+            </div>
+            <div class="aprovacao">
+                <p>Média de aprovação: 7,0</p>
+            </div>
+        </div>
+        <!-- Tabela para exibir as notas, faltas e situação do aluno matriculado -->
+        <div class="table"> 
+            <table>
+                <!-- Cabeçalho da tabela -->
+                <thead>
+                    <tr>
+                        <th>DISCIPLINA</th>
+                        <th>1° BIM.</th>
+                        <th>2° BIM.</th>
+                        <th>3° BIM.</th>
+                        <th>4° BIM.</th>
+                        <th>MÉDIA FINAL</th>
+                        <th>FALTAS</th>
+                        <th>SITUAÇÃO</th>
+                    </tr>
+                </thead>
+                <!-- Corpo da tabela -->
+                <tbody>
+                    <tr>
+                        <td>Matemática</td>
+                        <td>8,5</td>
+                        <td>7,5</td>
+                        <td>9,0</td>
+                        <td>8,0</td>
+                        <td>8,3</td>
+                        <td>4</td>
+                        <td>Aprovado</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Rodapé da tabela, onde ficam algumas informações gerais -->
+            <div class="footer-table">
+                <div class="media">
+                    <p>Média Geral Acumulada: <strong>7,7</strong></p>
+                </div>
+                <div class="faltas">
+                    <p>Total de faltas no ano: <strong>17</strong></p>
+                </div>
+                <div class="situacao">
+                    <p>Situação Geral: Aprovado com pendência em Recuperação</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/JS/boletim.js"></script>
+</body>
+</html>
