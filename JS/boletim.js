@@ -1,7 +1,24 @@
 async function carregarRelatorio() {
     try {
-        // Para testes, vamos fixar o ID 1. Depois trocamos por uma variável dinâmica.
-        const resposta = await fetch(`http://localhost:3000/boletim/9`);
+        // Lê a barra de endereços do navegador (captura tudo depois do ?)
+        const parametrosUrl = new URLSearchParams(window.location.search);
+        // Extrai o número exato da matrícula
+        const idMatricula = parametrosUrl.get('id');
+
+        if (parametrosUrl.get('abrirModal') === 'true') {
+            modal.style.display = 'block';
+            preencheSelect();
+        }
+
+        // Se abrir a tela sem um ID na URL, aborta para não dar erro
+        if (!idMatricula) {
+            console.error('Nenhum aluno selecionado');
+            return;
+        }
+
+        // Acessa a rota do back-end passando a matrícula de um aluno específico
+        // selecionada lá na tela de matrícula
+        const resposta = await fetch(`http://localhost:3000/boletim/${idMatricula}`);
         const boletim = await resposta.json();
 
         // Preenchendo o cabeçalho:
@@ -91,3 +108,45 @@ async function carregarRelatorio() {
 }
 
 document.addEventListener('DOMContentLoaded', carregarRelatorio);
+
+const btnRelatorio = document.querySelectorAll('.btn-action-side-bar')[5];
+const modal = document.querySelector('.modal');
+const btnClose = document.querySelector('.close');
+
+btnRelatorio.onclick = function() {
+    modal.style.display = 'block';
+    preencheSelect();
+}
+
+btnClose.onclick = function() {
+    modal.style.display = 'none';
+}
+
+let selectAluno = document.getElementById('aluno');
+
+// Função para preencher o select com os alunos e a turma associada
+async function preencheSelect() {
+    try {
+        const resALunos = await fetch('http://localhost:3000/matriculas');
+        const alunos = await resALunos.json();
+
+        selectAluno.innerHTML = '<option value="" disabled selected>Selecione um aluno...</option>'
+        alunos.forEach(aluno => {
+            selectAluno.innerHTML += `<option value="${aluno.id_matricula}">${aluno.nome_aluno} - ${aluno.nome_turma}</option>`
+        })
+    } catch (error) {
+        console.error('Erro ao buscar os alunos')
+    }
+}
+
+const btnGeraBoletim = document.querySelector('.btn-save');
+
+btnGeraBoletim.onclick = function() {
+    const idAluno = document.getElementById('aluno').value;
+    if (!idAluno) {
+        alert('Por favor, selecione um aluno para gerar um boletim.')
+        return;
+    }
+    window.location.href = 'boletim.html?id=' + idAluno;
+
+}

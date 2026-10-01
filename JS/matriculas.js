@@ -128,6 +128,9 @@ async function carregarMatriculas() {
             <td>
                 <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
                 <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
+                <button class="btn-action-table" onclick="window.location.href='boletim.html?id=${matricula.id_matricula}'" title= "Ver Boletim">
+                    <span class="material-symbols-outlined">article_person</span>
+                </button>
             </td>
         </tr>
         `;
