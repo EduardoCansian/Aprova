@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/dashboard.css">
+    <title>Dashboard inicial</title>
+</head>
+<body>
+    <!-- Barra lateral -->
+    <aside class="aside-bar">
+        <header class="header-logo">
+            <img src="/img/Aprova_logo-removebg-preview.png" alt="logo" width="50px">
+            <p>Aprova</p>
+        </header>
+        <!-- Botões principais do menu lateral -->
+        <div class="btn-aside-bar">
+            <button class="btn btn-action-side-bar active" onclick="window.location.href='dashboard.html'"><span class="material-symbols-outlined">dashboard</span>Dashboard</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='cadastros.html'"><span class="material-symbols-outlined">app_registration</span>Cadastros Básicos</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='matriculas.html'"><span class="material-symbols-outlined">school</span>Matrículas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='alocacao.html'"><span class="material-symbols-outlined">assignment</span>Alocação de Aulas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='notas.html'"><span class="material-symbols-outlined">fact_check</span>Lançamento de Notas</button>
+            <button class="btn btn-action-side-bar" onclick="window.location.href='boletim.html?abrirModal=true'"><span class="material-symbols-outlined">insert_chart</span>Relatórios</button>
+        </div>
+        <!-- Rodapé da barra lateral -->
+        <div class="footer-aside-bar">
+            <button class="btn btn-action-side-bar" id="btn-footer"><span class="material-symbols-outlined">supervisor_account</span>Secretaria Escolar</button>
+            <p>&copy; Todos os Direitos Reservados</p>
+        </div>
+    </aside>
+    <!-- Conteúdo central -->
+    <main class="main-content">
+        <!-- Cabeçalho fixo no conteúdo principal -->
+        <header class="header-menu-action">
+            <div class="select-menu-matricula">
+                <h1>Visão Geral - Ano Letivo 2026</h1>
+                <div>
+                    <p>Painel de controle central e atalhos operacionais da unidade escolar.</p>
+                </div>
+            </div>
+            
+        </header>
+        <!-- Indicadores para listra informações -->
+         <div class="indicator-container">
+            <div class="indicators">
+                <div class="count">
+                    <p>ALUNOS MATRICULADOS</p>
+                    <p class="numbers" id="num-alunos">3</p>
+                </div>
+                <div class="icon-indicators">
+                    <span class="material-symbols-outlined">person</span>
+                </div>
+            </div>
+            <div class="indicators">
+                <div class="count">
+                    <p>PROFESSORES ATIVOS</p>
+                    <p class="numbers" id="num-professores">2</p>
+                </div>
+                
+                <div class="icon-indicators">
+                    <span class="material-symbols-outlined">clinical_notes</span>
+                </div>
+            </div>
+            <div class="indicators">
+                <div class="count">
+                    <p>TURMAS ATIVAS</p>
+                    <p class="numbers" id="num-turmas">2</p>
+                </div>
+                
+                <div class="icon-indicators">
+                    <span class="material-symbols-outlined">groups</span>
+                </div>
+            </div>
+         </div>
+        
+        <div class="quick-actions">
+            <div>
+                <h2>Ações Rápidas</h2>
+                <p>Acesse diretamente os módulos de maior fluxo de trabalho diário.</p>
+            </div>
+            <div class="actions-box">
+                <div class="container-actions">
+                    <div class="icon-indicators">   
+                        <span class="material-symbols-outlined">fact_check</span>
+                    </div>
+                    <div class="action-content">
+                        <div>
+                            <h3>Lançar Notas e Faltas</h3>
+                            <p>Registre notas de cada bimestre e as faltas dos alunos.</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-action" onclick="window.location.href = 'notas.html'">Acessar Lançamento de Notas<span class="material-symbols-outlined">open_in_new</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-actions">
+                    <div class="icon-indicators">
+                        <span class="material-symbols-outlined">person_add</span>
+                    </div>
+                    <div class="action-content">
+                        <div>
+                            <h3>Cadastrar Novo Aluno</h3>
+                            <p>Realize matrículas, preencha documentação oficial e dados do aluno.</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-action" onclick="window.location.href='cadastros.html?abrirModal=true'">Iniciar Cadastro<span class="material-symbols-outlined">open_in_new</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-actions">
+                    <div class="icon-indicators">
+                        <span class="material-symbols-outlined">insert_chart</span>
+                    </div>
+                    <div class="action-content">
+                        <div>
+                            <h3>Emitir Boletim</h3>
+                            <p>Gere relatórios de notas de um discente para impressão ou envio por e-mail.</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-action" onclick="window.location.href='boletim.html?abrirModal=true'">Gerar Boletim Escolar<span class="material-symbols-outlined">open_in_new</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    <script src="/JS/dashboard.js"></script>
+</body>
+</html>

@@ -53,6 +53,12 @@ function closeModal() {
     modalContent.style.display = 'none';
     input.innerText = '';
 }
+// Abrir o modal de cadastro ao clicar em "Cadastrar Novo Aluno" no dashboard
+const parametrosUrl = new URLSearchParams(window.location.search);
+
+if (parametrosUrl.get('abrirModal') === 'true') {
+    btnAdd.onclick();
+}
 
 // Máscara para o CPF
 const cpfInput = document.getElementById('cpf');
