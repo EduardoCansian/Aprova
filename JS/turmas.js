@@ -1,32 +1,42 @@
+let turmasGlobais = [];
+let paginaAtual = 1;
+const registrosPorPagina = 5;
 // Função para buscar os alunos no banco de dados
 async function carregarTrumas() {
     try {
         const resposta = await fetch('http://localhost:3000/turmas'); //Rota do servidor
-        const turmas = await resposta.json(); // Armazenando os dados das turmas no formato JSON na variável professores
+        turmasGlobais = await resposta.json(); // Armazenando os dados das turmas no formato JSON na variável professores
+        configurarPaginacao(turmasGlobais, 5, renderizarTabela);
 
-        const tbody = document.querySelector('tbody'); // Acessando a tabela
-        tbody.innerHTML = ''; //Limpando os dados teste
-
-        turmas.forEach(turma => {
-            // Variável criada para receber todo o conteúdo nas tags HTML
-            const linha = ` 
-                <tr>
-                    <td>#${turma.id_turma}</td>
-                    <td>${turma.nome}</td>
-                    <td>${turma.ano_letivo}</td>
-                    <td>${turma.semestre}</td>
-                    <td>
-                        <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
-                        <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
-                    </td>
-                </tr>
-            `;
-            tbody.innerHTML += linha; //Conteúdo HTML da tabela é preenchido a cada iteração do ForEach
-        });
+        const resCount = await fetch('http://localhost:3000/turmas/contagem');
+        const count = await resCount.json()
+        document.querySelector('.numbers').innerText = count.total;        
 
     } catch (error) { // Tratamento de erro personalizado
         console.error('Erro ao buscar Turmas:', error)
     }
+}
+
+function renderizarTabela(turmasSeparadas) {
+    const tbody = document.querySelector('tbody'); // Acessando a tabela
+    tbody.innerHTML = ''; //Limpando os dados teste
+
+    turmasSeparadas.forEach(turma => {
+        // Variável criada para receber todo o conteúdo nas tags HTML
+        const linha = ` 
+            <tr>
+                <td><div id="id">#${turma.id_turma}</div></td>
+                <td>${turma.nome}</td>
+                <td>${turma.ano_letivo}</td>
+                <td>${turma.semestre}</td>
+                <td>
+                    <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
+                    <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
+                </td>
+            </tr>
+        `;
+        tbody.innerHTML += linha; //Conteúdo HTML da tabela é preenchido a cada iteração do ForEach
+    });
 }
 
 // Chamando a função ao carregar a página

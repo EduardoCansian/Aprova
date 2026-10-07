@@ -37,20 +37,25 @@
         <!-- Cabeçalho fixo no conteúdo principal -->
         <header class="header-menu-action">
             <div class="select-menu">
-                <h1>Gestão de Turmas</h1>
-                <!-- Menu suspenso para acessar o cadastro de outras entidades -->
-                <select name="options" id="options-register">
-                    <option value="cadastros.html">Gestão de Alunos</option>
-                    <option value="professores.html">Gestão de Professores</option>
-                    <option value="turmas.html" selected>Gestão de Turmas</option>
-                    <option value="disciplinas.html">Gestão de Disciplinas</option>
-                </select>
+                <div class="title-select">  
+                    <h2>Gestão de Turmas</h2>
+                    <!-- Menu suspenso para acessar o cadastro de outras entidades -->
+                    <select name="options" id="options-register">
+                        <option value="cadastros.html">Gestão de Alunos</option>
+                        <option value="professores.html">Gestão de Professores</option>
+                        <option value="turmas.html" selected>Gestão de Turmas</option>
+                        <option value="disciplinas.html">Gestão de Disciplinas</option>
+                    </select>
+                </div>
+                <div class="subtitle">
+                    <p>Estruturação de classes, anos letivos e organização de períodos acadêmicos.</p>
+                </div>
             </div>
-            <!-- <div>
-                <p>Registro acadêmico oficial e controle de cadastro unificado do Polo Central</p>
-            </div> -->
             <div class="header-actions">
-                <input type="search" id="search" placeholder="Pesquisar por nome ou CPF..." >
+                <div class="input-search">
+                    <span class="material-symbols-outlined">person_search</span>
+                    <input type="search" id="search" placeholder="Pesquisar por nome da turma" >
+                </div>
                 <button class="btn btn-add-entity"><span class="material-symbols-outlined">group_add</span>Nova Turma</button>
             </div>
         </header>
@@ -58,7 +63,7 @@
         <div class="indicators">
             <div class="count">
                 <p>TURMAS CADASTRADAS</p>
-                <p class="numbers">1/1</p>
+                <p class="numbers">1</p>
             </div>
             
             <div class="icon-indicators">
@@ -91,7 +96,7 @@
                 <!-- Corpo da tabela -->
                 <tbody>
                     <tr>
-                        <td>#1001</td>
+                        <td><div id="id">#1001</div></td>
                         <td>6° ANO B</td>
                         <td>2026</td>
                         <td>1</td>
@@ -104,9 +109,9 @@
             </table>
             <!-- Rodapé da tabela, onde fica o botão de avançar/voltar -->
             <div class="footer-table">
-                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
-                <button class="btn-footer">1</button>
-                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+                <button class="btn-footer" id="btn-prev"><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
+                <button class="btn-footer" id="page-number">1</button>
+                <button class="btn-footer" id="btn-next"><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
             </div>
         </div>
     </main>
@@ -142,6 +147,7 @@
             </div>
         </div>
     </div>
+    <script src="/JS/paginacao.js"></script>
     <script src="/JS/turmas.js"></script>
 </body>
 </html>

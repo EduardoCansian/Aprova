@@ -1,32 +1,42 @@
+let disciplinasGlobais = [];
+let paginaAtual = 1;
+const registrosPorPagina = 5;
 // Função para buscar os alunos no banco de dados
 async function carregarDisciplinas() {
     try {
         const resposta = await fetch('http://localhost:3000/disciplinas'); //Rota do servidor
-        const disciplinas = await resposta.json(); // Armazenando os dados das disciplinas no formato JSON na variável disciplinas
-
-        const tbody = document.querySelector('tbody'); // Acessando a tabela
-        tbody.innerHTML = ''; //Limpando os dados teste
-
-        disciplinas.forEach(disciplina => {
-            // Variável criada para receber todo o conteúdo nas tags HTML
-            const linha = ` 
-                <tr>
-                    <td>#${disciplina.id_disciplina}</td>
-                    <td>${disciplina.nome}</td>
-                    <td>${disciplina.carga_horaria}</td>
-                    <td>${disciplina.ementa}</td>
-                    <td>
-                        <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
-                        <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
-                    </td>
-                </tr>
-            `;
-            tbody.innerHTML += linha; //Conteúdo HTML da tabela é preenchido a cada iteração do ForEach
-        });
+        disciplinasGlobais = await resposta.json(); // Armazenando os dados das disciplinas no formato JSON na variável disciplinas
+        configurarPaginacao(disciplinasGlobais, 5, renderizarTabela);
+        
+        const resCount = await fetch('http://localhost:3000/disciplinas/contagem');
+        const count = await resCount.json()
+        document.querySelector('.numbers').innerText = count.total;
 
     } catch (error) { // Tratamento de erro personalizado
         console.error('Erro ao buscar Disciplinas:', error)
     }
+}
+
+function renderizarTabela(turmasSeparadas) {
+    const tbody = document.querySelector('tbody'); // Acessando a tabela
+    tbody.innerHTML = ''; //Limpando os dados teste
+
+    turmasSeparadas.forEach(disciplina => {
+        // Variável criada para receber todo o conteúdo nas tags HTML
+        const linha = ` 
+            <tr>
+                <td><div id="id">#${disciplina.id_disciplina}</div></td>
+                <td>${disciplina.nome}</td>
+                <td>${disciplina.carga_horaria}</td>
+                <td>${disciplina.ementa}</td>
+                <td>
+                    <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
+                    <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
+                </td>
+            </tr>
+        `;
+        tbody.innerHTML += linha; //Conteúdo HTML da tabela é preenchido a cada iteração do ForEach
+    });
 }
 
 // Chamando a função ao carregar a página

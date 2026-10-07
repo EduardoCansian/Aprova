@@ -1,33 +1,43 @@
+let professoresGlobais = [];
+let paginaAtual = 1;
+const registrosPorPagina = 5;
 // Função para buscar os alunos no banco de dados
 async function carregarProfessores() {
     try {
         const resposta = await fetch('http://localhost:3000/professores'); //Rota do servidor
-        const professores = await resposta.json(); // Armazenando os dados dos professores no formato JSON na variável professores
+        professoresGlobais = await resposta.json(); // Armazenando os dados dos professores no formato JSON na variável professores
+        configurarPaginacao(professoresGlobais, 5, rederizarTabela);
 
-        const tbody = document.querySelector('tbody'); // Acessando a tabela
-        tbody.innerHTML = ''; //Limpando os dados teste
-
-        professores.forEach(professor => {
-            // Variável criada para receber todo o conteúdo nas tags HTML
-            const linha = ` 
-                <tr>
-                    <td>#${professor.id_professor}</td>
-                    <td>${professor.nome}</td>
-                    <td>${professor.cpf}</td>
-                    <td>${professor.email}</td>
-                    <td>${professor.especialidade}</td>
-                    <td>
-                        <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
-                        <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
-                    </td>
-                </tr>
-            `;
-            tbody.innerHTML += linha; //Conteúdo HTML da tabela é preenchido a cada iteração do ForEach
-        });
+        const resCount = await fetch('http://localhost:3000/professores/contagem');
+        const count = await resCount.json();
+        document.querySelector('.numbers').innerText = count.total;        
 
     } catch (error) { // Tratamento de erro personalizado
         console.error('Erro ao buscar Professores:', error)
     }
+}
+
+function rederizarTabela(professoresSeparados) {
+    const tbody = document.querySelector('tbody'); // Acessando a tabela
+    tbody.innerHTML = ''; //Limpando os dados teste
+
+    professoresSeparados.forEach(professor => {
+        // Variável criada para receber todo o conteúdo nas tags HTML
+        const linha = ` 
+            <tr>
+                <td><div id="id">#${professor.id_professor}</div></td>
+                <td>${professor.nome}</td>
+                <td>${professor.cpf}</td>
+                <td>${professor.email}</td>
+                <td>${professor.especialidade}</td>
+                <td>
+                    <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
+                    <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
+                </td>
+            </tr>
+        `;
+        tbody.innerHTML += linha; //Conteúdo HTML da tabela é preenchido a cada iteração do ForEach
+    });
 }
 
 // Chamando a função ao carregar a página

@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/cadastros.css">
     <link rel="icon" href="/img/Aprova_logo-removebg-preview.png">
-    <title>Cadastros Básicos</title>
+    <title>Cadastros Básicos - Alunos</title>
 </head>
 <body>
     <!-- Barra lateral -->
@@ -36,20 +36,25 @@
         <!-- Cabeçalho fixo no conteúdo principal -->
         <header class="header-menu-action">
             <div class="select-menu">
-                <h1>Gestão de Alunos</h1>
-                <!-- Menu suspenso para acessar o cadastro de outras entidades -->
-                <select name="options" id="options-register">
-                    <option value="cadastros.html" selected>Gestão de Alunos</option>
-                    <option value="professores.html">Gestão de Professores</option>
-                    <option value="turmas.html">Gestão de Turmas</option>
-                    <option value="disciplinas.html">Gestão de Disciplinas</option>
-                </select>
+                <div class="title-select">
+                    <h2>Gestão de Alunos</h2>
+                    <!-- Menu suspenso para acessar o cadastro de outras entidades -->
+                    <select name="options" id="options-register">
+                        <option value="cadastros.html" selected>Gestão de Alunos</option>
+                        <option value="professores.html">Gestão de Professores</option>
+                        <option value="turmas.html">Gestão de Turmas</option>
+                        <option value="disciplinas.html">Gestão de Disciplinas</option>
+                    </select>
+                </div>
+                <div class="subtitle">
+                    <p>Administração do corpo discente, dados pessoais e registros acadêmicos.</p>
+                </div>
             </div>
-            <!-- <div>
-                <p>Registro acadêmico oficial e controle de cadastro unificado do Polo Central</p>
-            </div> -->
             <div class="header-actions">
-                <input type="search" id="search" placeholder="Pesquisar por nome ou CPF..." >
+                <div class="input-search">
+                    <span class="material-symbols-outlined">person_search</span>
+                    <input type="search" id="search" placeholder="Pesquisar por nome ou CPF..." >
+                </div>
                 <button class="btn btn-add-entity"><span class="material-symbols-outlined">person_add</span>Novo Aluno</button>
             </div>
         </header>
@@ -91,23 +96,28 @@
                 <!-- Corpo da tabela -->
                 <tbody>
                     <tr>
-                        <td>#1042</td>
+                        <td><div id="id">#1042</div></td>
                         <td>Joãozinho Silva</td>
                         <td>384.921.840-12</td>
                         <td>joaozinho.silva@escola.br</td>
                         <td>15/04/2011</td>
                         <td>
-                            <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
-                            <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
+                            <div class="tooltip-container">
+                                <span class="hint-texto" id="hintBoxEdit">Editar dados</span>
+                                <button class="btn-action-table" id="editar"><span class="material-symbols-outlined">edit</span></button>
+                                <button class="btn-action-table" id="excluir"><span class="material-symbols-outlined">delete</span></button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <!-- Rodapé da tabela, onde fica o botão de avançar/voltar -->
             <div class="footer-table">
-                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
-                <button class="btn-footer">1</button>
-                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+                <div class="footer-actions">
+                    <button class="btn-footer" id="btn-prev"><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
+                    <span id="page-number">1</span>
+                    <button class="btn-footer" id="btn-next"><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+                </div>
             </div>
         </div>
     </main>
@@ -147,6 +157,7 @@
             </div>
         </div>
     </div>
+    <script src="/JS/paginacao.js"></script>
     <script src="/JS/cadastros.js"></script>
 </body>
 </html>

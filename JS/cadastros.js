@@ -1,35 +1,46 @@
+let alunosGlobais = [];
+let paginaAtual = 1;
+const registrosPorPagina = 5;
 // Função para buscar os alunos no banco de dados
 async function carregarAlunos() {
     try {
         const resposta = await fetch('http://localhost:3000/alunos'); //Rota do servidor
-        const alunos = await resposta.json(); // Armazenando os dados dos alunos no formato json na variável alunos
-
-        const tbody = document.querySelector('tbody'); // Acessando a tabela
-        tbody.innerHTML = ''; //Limpando os dados teste
-
-        alunos.forEach(aluno => {
-            // Formatando data para o padrão brasileiro
-            const dataFormatada = new Date(aluno.data_nascimento).toLocaleDateString('pt-BR');
-            // Variável criada para receber todo o conteúdo nas tags HTML
-            const linha = ` 
-                <tr>
-                    <td>#${aluno.id_aluno}</td>
-                    <td>${aluno.nome}</td>
-                    <td>${aluno.cpf}</td>
-                    <td>${aluno.email}</td>
-                    <td>${dataFormatada}</td>
-                    <td>
-                        <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
-                        <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
-                    </td>
-                </tr>
-            `;
-            tbody.innerHTML += linha; //Conteúdo HTML da tabela é preenchido a cada iteração do ForEach
-        });
+        alunosGlobais = await resposta.json(); // Armazenando os dados dos alunos no formato json na variável alunos
+        configurarPaginacao(alunosGlobais, 5, rederizarTabela)
+    
+        const resCount = await fetch('http://localhost:3000/alunos/contagem');
+        const count = await resCount.json();
+        document.querySelector('.numbers').innerText = count.total;
 
     } catch (error) { // Tratamento de erro personalizado
         console.error('Erro ao buscar Alunos:', error)
     }
+}
+
+function rederizarTabela(alunosFatiados) {
+    const tbody = document.querySelector('tbody'); // Acessando a tabela
+    tbody.innerHTML = ''; //Limpando os dados teste
+
+    // O laço Foreach agora roda apenas nos 5 alunos separados
+    alunosFatiados.forEach(aluno => {
+        // Formatando data para o padrão brasileiro
+        const dataFormatada = new Date(aluno.data_nascimento).toLocaleDateString('pt-BR');
+        // Variável criada para receber todo o conteúdo nas tags HTML
+        const linha = ` 
+            <tr>
+                <td><div id="id">#${aluno.id_aluno}</div></td>
+                <td>${aluno.nome}</td>
+                <td>${aluno.cpf}</td>
+                <td>${aluno.email}</td>
+                <td>${dataFormatada}</td>
+                <td>
+                    <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
+                    <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
+                </td>
+            </tr>
+        `;
+        tbody.innerHTML += linha; //Conteúdo HTML da tabela é preenchido a cada iteração do ForEach
+    });
 }
 
 // Chamando a função ao carregar a página
@@ -130,3 +141,17 @@ const menuDropDown = document.getElementById('options-register');
 menuDropDown.onchange = function() {
     window.location.href = this.value;
 };
+
+
+
+const hint = document.getElementById('hintboxEdit');
+const btnEdit = document.getElementById('editar');
+const btnDelete = document.getElementById('excluir');
+
+btnEdit.addEventListener('mouseenter', () => {
+    hint.textContent = 'aaa'
+})
+
+btnDelete.addEventListener('mouseenter', () => {
+    hint.textContent = 'Exluir dados'
+})
