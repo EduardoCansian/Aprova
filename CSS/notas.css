@@ -44,6 +44,7 @@ img {
     margin-top: 20px;
     margin-left: 10px;
     align-self: flex-start;
+    align-items: center;
 }
 
 .header-logo p {
@@ -73,9 +74,9 @@ img {
 }
 
 .active {
-    background-color: rgba(255, 255, 255, 0.15); /* Fundo branco translúcido */
+    background-color: rgba(129, 106, 223, 0.248);
     margin: 0 10px; /* Descolar das bordas laterais do menu */
-    border: none; /* Remover a borda direita azulada */
+    border-bottom: 2px solid rgb(118, 118, 255);
 }
 
 .footer-aside-bar {
@@ -101,23 +102,52 @@ img {
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
     border: none;
 }
 
 select {
-    padding: 5px;
-    border-radius: 10px;
-    border: 0;
-    background-color: #94a0a9;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    padding: 10px 40px 10px 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 19px;
+}
+
+select:hover {
+    border-color: #9eb5dd;
+    transition: 0.3s ease-in-out;
+}
+
+select:focus {
+    border-color: #003361;
+    box-shadow: 0 0 5px 5px rgba(0, 51, 97, 0.15);
+}
+
+option {
+    font-weight: 500;
+    background-color: #003361;
+    color: whitesmoke;
 }
 
 h1 {
     margin-bottom: 0;
 }
 
-.select-menu-matricula {
+.title-menu {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -133,6 +163,11 @@ h1 {
 .header-actions {
     display: flex;
     gap: 20px;
+}
+
+.subtitle p {
+    color: #6c757d;
+    font-size: 15px;
 }
 
 .header-actions input {
@@ -156,7 +191,7 @@ h1 {
 .selects {
     background-color: white;
     width: 100%;
-    max-width: 500px;
+    max-width: 510px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -164,13 +199,14 @@ h1 {
     margin-top: 15px;
     border-radius: 15px;
     padding: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.434);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.227);
 }
 
 .select-box {
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 2px;
 }
 
 .header-select {
@@ -183,19 +219,41 @@ h1 {
     font-weight: 600;
 }
 
-.count select {
-    font-weight: 600;
-    margin-top: 5px;
-}
-
 .header-table {
     margin-top: 20px;
-    padding: 15px;
+    padding: 13px;
     border-radius: 10px 10px 0px 0px;
     background-color: white;
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    background-color: #cde4fd9f;
+    color: #003361;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.icon span {
+    font-size: 30px;
+}
+
+.title-table {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.instruction {
+    font-size: 13px;
+    color: #6c757d;
+    margin-top: 7px;
 }
 
 .table {
@@ -203,6 +261,10 @@ h1 {
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    max-height: 450px;
+    overflow-y: auto;
+    border-radius: 0 10px 10px 10px;
+    background-color: #bcbcbc9d;
 }
 
 table {
@@ -211,13 +273,12 @@ table {
 }
 
 thead {
-    background-color: #0034615d;
-    color: #3e3e3e;
+    background-color: #03559c59;
+    color: #363636;
 }
 
 tr {
-    display: flex;
-    justify-content: space-around;
+    border-bottom: 1px solid #eef2f5;
 }
 
 td {
@@ -230,7 +291,10 @@ th {
     letter-spacing: 0.5px;
     text-align: left;
     padding: 15px 10px;
-    /* border-bottom: 2px solid #eef2f5;  */
+    position: sticky;
+    top: 0;
+    background-color: #eaf1f7;
+    z-index: 1;
 }
 tbody {
     background-color: white;
@@ -238,7 +302,64 @@ tbody {
 }
 
 td, th {
-    padding: 10px;
+    padding: 13px 10px;
+    text-align: left;
+}
+
+td input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+    border-radius: 6px;
+}
+
+td input:focus {
+    border-color: #003361;
+    box-shadow: 0 0 0 3px rgba(0, 51, 97, 0.1);
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+td small {
+    display: block;
+    font-size: 12px;
+    color: #757b89;
+    margin-top: 4px;
+}
+
+.col-nome {
+    width: 60%;
+}
+
+.nome {
+    font-weight: 500;
+}
+
+.aluno-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar-iniciais {
+    width: 40px;
+    height: 40px;
+    background-color: #e0e7ff; /* Fundo azul bem clarinho, igual ao modelo */
+    color: #3730a3; /* Letra azul escura */
+    border-radius: 50%; /* Transforma o quadrado em um círculo perfeito */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0; /* Impede que o círculo seja esmagado */
 }
 
 .btn-action-table {
@@ -253,6 +374,12 @@ td, th {
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
     background-color: #94a0a9;
+}
+
+.footer-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-table {

@@ -36,9 +36,9 @@
         <!-- Cabeçalho fixo no conteúdo principal -->
         <header class="header-menu-action">
             <div class="select-menu-matricula">
-                <h1>Lançamento de Notas e Frequência</h1>
-                <div>
-                    <p>Selecione a turma e o período para registrar as avaliações e faltas</p>
+                <h2>Lançamento de Notas e Frequência</h2>
+                <div class="subtitle">
+                    <p>Selecione a <strong>turma</strong>, a <strong>disciplina</strong> e o <strong>período</strong> para registrar as avaliações e faltas dos alunos.</p>
                 </div>
             </div>
             <div class="selects">
@@ -72,8 +72,14 @@
             </div>
         </header>
         <div class="header-table">
-            <p>Caderno de Notas e Faltas</p>
-            <p>Pressione [Tab] ou [Enter] para navegar entre as células.</p>
+            <div class="icon">
+                <span class="material-symbols-outlined">data_table</span>
+            </div>
+            <div>
+                <p class="title-table">Caderno de Notas e Faltas</p>
+                <p class="instruction">Pressione [Tab] ou [Enter] para navegar entre as células.</p>
+            </div>
+            
         </div>
         <!-- Tabela para exibir os alunos e preencher as notas e faltas -->
         <div class="table"> 
@@ -81,7 +87,7 @@
                 <!-- Cabeçalho da tabela -->
                 <thead>
                     <tr>
-                        <th>NOME DO ALUNO</th>
+                        <th class="col-nome">NOME DO ALUNO</th>
                         <th>NOTAS (0,0 a 10,0)</th>
                         <th>TOTAL DE FALTAS</th>
                     </tr>
@@ -89,7 +95,7 @@
                 <!-- Corpo da tabela -->
                 <tbody>
                     <tr>
-                        <td>Vazio</td>
+                        <td class="nome">Vazio</td>
                         <td>Vazio</td>
                         <td>Vazio</td>
                     </tr>
@@ -97,9 +103,12 @@
             </table>
             <!-- Rodapé da tabela, onde fica os botões de Descartar e Salvar Lançamento -->
             <div class="footer-table">
-                <button class="btn btn-cancel"><span class="material-symbols-outlined">cancel</span>Descartar</button>
-                <button class="btn btn-save"><span class="material-symbols-outlined">save</span>Salvar Lançamento</button>
+                <div class="footer-actions">
+                    <button class="btn btn-cancel"><span class="material-symbols-outlined">cancel</span>Descartar</button>
+                    <button class="btn btn-save"><span class="material-symbols-outlined">save</span>Salvar Lançamento</button>
+                </div>
             </div>
+                
         </div>
     </main>
     <script src="/JS/notas.js"></script>

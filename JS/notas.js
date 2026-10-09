@@ -40,13 +40,26 @@ async function carregarNomeAluno() {
         tbody.innerHTML = '';
 
         alunos.forEach(aluno => {
+            const partesNome = aluno.nome_aluno.split(' ');
+            let letra1 = partesNome[0][0];
+            let letra2 = partesNome[1][0] 
+
+            // if (partesNome.length > 1) {
+            //     iniciais += partesNome[partesNome.length - 1][0];
+            // }
+            let iniciais = letra1 + letra2;
             tbody.innerHTML += `
             <tr>
-                <td>
-                    ${aluno.nome_aluno} <br>
-                    <small style="color: #ccc;">Matrícula: #${aluno.id_matricula}</small>
+                <td class="nome">
+                    <div class="aluno-info">
+                        <div class="avatar-iniciais">${iniciais.toUpperCase()}</div>
+                        <div>
+                            ${aluno.nome_aluno} <br>
+                            <small style="color: #aeaeae;">Matrícula: #${aluno.id_matricula}</small>
+                        </div>
+                    </div> 
                 </td>
-                <td><input type="number" step="0.1" min="0" max="10" class="input-nota" data-matricula="${aluno.id_matricula}"></td>
+                <td><input type="number" step="0.1" min="0" max="10" class="input-nota" data-matricula="${aluno.id_matricula}"> pts</td>
                 <td><input type="number" min="0" class="input-falta" data-matricula="${aluno.id_matricula}"></td>
             </tr>
             `
@@ -117,6 +130,23 @@ async function salvaNotas() {
     } catch (error) {
         console.error('Erro ao salvar lançamento de nota e frequência', error)
     }
-    
-
 }
+const tbodyNotas = document.querySelector('tbody');
+
+tbodyNotas.addEventListener('keydown', function(event) {
+    // Verifica se a tecla pressionada foi o "Enter"
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Impede o navegador de tentar enviar um formulário ou quebrar a linha
+        
+        // Mapeia todos os inputs numéricos (notas e faltas) que existem dentro da tabela no momento
+        const inputs = Array.from(tbodyNotas.querySelectorAll('input[type="number"]'));
+        
+        // Descobre a posição (índice) do input onde o cursor do professor está agora
+        const indexAtual = inputs.indexOf(event.target);
+        
+        // Se encontrar o input atual e ele não for o último da lista, move o foco para o próximo
+        if (indexAtual > -1 && indexAtual < inputs.length - 1) {
+            inputs[indexAtual + 1].focus();
+        }
+    }
+});

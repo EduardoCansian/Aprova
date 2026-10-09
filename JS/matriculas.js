@@ -4,11 +4,11 @@ const registrosPorPagina = 5;
 
 async function carregarMatriculas() {
     try {
-        const resposta = await fetch('http://192.168.15.4:3000/matriculas');
+        const resposta = await fetch('http://localhost:3000/matriculas');
         matriculasGlobais = await resposta.json();
         configurarPaginacao(matriculasGlobais, 5, renderizarTabela);
 
-        const resCount = await fetch ('http://192.168.15.4:3000/matriculas/contagem');
+        const resCount = await fetch ('http://localhost:3000/matriculas/contagem');
         const count = await resCount.json();
         document.querySelector('.numbers').innerText = count.total;
         
@@ -56,21 +56,21 @@ function renderizarTabela(matriculasSeparadas) {
 async function carregarAlunos_Turmas() {
     try {
         // Buscando os alunos no back-end
-        const resAlunos = await fetch('http://192.168.15.4:3000/alunos'); //Rota do servidor para buscar os alunos
+        const resAlunos = await fetch('http://localhost:3000/alunos'); //Rota do servidor para buscar os alunos
         const alunos = await resAlunos.json(); // Armazenando os dados dos alunos no formato json
         const selectAluno = document.getElementById('aluno'); // Acessando o select de Aluno
         
-        selectAluno.innerHTML += `<option value="" disabled selected>Selecione um aluno...</option>`
+        selectAluno.innerHTML = `<option value="" disabled selected>Selecione um aluno...</option>`
         alunos.forEach(aluno => {
             selectAluno.innerHTML += `<option value="${aluno.id_aluno}">${aluno.nome} (CPF: ${aluno.cpf})</option>`;
         });
 
         // Buscando as turmas no back-end
-        const resTurmas = await fetch('http://192.168.15.4:3000/turmas'); //Rota do servidor para buscar as turmas
+        const resTurmas = await fetch('http://localhost:3000/turmas'); //Rota do servidor para buscar as turmas
         const turmas = await resTurmas.json();
         const selectTurma = document.getElementById('turma') // Acessando o select de Turmas
 
-        selectTurma.innerHTML += `<option value="" disabled selected>Selecione a turma...</option>`;
+        selectTurma.innerHTML = `<option value="" disabled selected>Selecione a turma...</option>`;
         turmas.forEach(turma => {
             selectTurma.innerHTML += `<option value="${turma.id_turma}">${turma.nome}</option>`;
         })
@@ -128,7 +128,7 @@ btnSaveRegister.onclick = async function() {
     };
 
     try {
-        const resposta = await fetch('http://192.168.15.4:3000/matriculas', {
+        const resposta = await fetch('http://localhost:3000/matriculas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
