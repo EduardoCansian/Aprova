@@ -36,14 +36,16 @@
         <!-- Cabeçalho fixo no conteúdo principal -->
         <header class="header-menu-action">
             <div class="select-menu-matricula">
-                <h1>Alocação de Aulas</h1>
-                <div>
-                    <p>Distribuição do corpo docente por matriz curricular e turmas ativas..</p>
+                <h2>Alocação de Aulas</h2>
+                <div class="subtitle">
+                    <p>Distribuição do corpo docente por matriz curricular e turmas ativas.</p>
                 </div>
             </div>
-            
             <div class="header-actions">
-                <input type="search" id="search" placeholder="Pesquisar por turma, disciplina ou professor..." >
+                <div class="input-search">
+                    <span class="material-symbols-outlined">content_paste_search</span>
+                    <input type="search" id="search" placeholder="Pesquisar por turma, disciplina ou professor..." >
+                </div>
                 <button class="btn btn-add-entity"><span class="material-symbols-outlined">assignment_add</span>Nova Alocação</button>
             </div>
         </header>
@@ -52,7 +54,7 @@
             <div class="indicators">
                 <div class="count">
                     <p>TOTAL DE ALOCAÇÕES</p>
-                    <p class="numbers">3</p>
+                    <p class="numbers" id="alocacoes">3</p>
                 </div>
                 
                 <div class="icon-indicators">
@@ -62,7 +64,7 @@
             <div class="indicators">
                 <div class="count">
                     <p>PROFESSORES ALOCADOS</p>
-                    <p class="numbers">2</p>
+                    <p class="numbers" id="professores-alocados">2</p>
                 </div>
                 
                 <div class="icon-indicators">
@@ -71,14 +73,20 @@
             </div>
          </div>
         <!-- Filtros da tabela + botão para ordenar os dados -->
-        <div class="filter-table">
-            <select name="dropdown" id="dropdown-order">
-                <option value="value1">ID - Crescente</option>
-                <option value="value1">ID - Decrescente</option>
-                <option value="value1">A - Z</option>
-                <option value="value1">Z - A</option>
-            </select>
-            <button class="btn"><span class="material-symbols-outlined">filter_alt</span>Filtros</button>
+        <div class="header-table">
+            <div class="title-table">
+                <span class="material-symbols-outlined">patient_list</span>
+                <p>Listagem de Alocações Docentes</p>
+            </div> 
+            <div class="filter-table">
+                <select name="dropdown" id="dropdown-order">
+                    <option value="value1">ID - Crescente</option>
+                    <option value="value1">ID - Decrescente</option>
+                    <option value="value1">A - Z</option>
+                    <option value="value1">Z - A</option>
+                </select>
+                <button class="btn"><span class="material-symbols-outlined">filter_alt</span>Filtros</button>
+            </div>
         </div>
         <!-- Tabela para exibir os dados (alunos, professores, disciplinas, turmas) -->
         <div class="table"> 
@@ -95,8 +103,8 @@
                 <!-- Corpo da tabela -->
                 <tbody>
                     <tr>
-                        <td>9° Ano A</td>
-                        <td>Língua Portuguesa</td>
+                        <td><div class="turma-semestre"><div id="turma-name">9° Ano A</div><div id="semestre">1° Semestre</div> </div></td>
+                        <td><div class="disciplina-cgh"><div id="disciplina-name">Língua Portuguesa</div><div id="cgh">80 horas</div> </div> </td>
                         <td>Carlos Eduardo Santos</td>
                         <td>
                             <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
@@ -107,9 +115,11 @@
             </table>
             <!-- Rodapé da tabela, onde fica o botão de avançar/voltar -->
             <div class="footer-table">
-                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
-                <button class="btn-footer">1</button>
-                <button class="btn-footer"><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+                <div class="footer-actions">
+                    <button class="btn-footer" id="btn-prev"><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
+                    <span id="page-number">1</span>
+                    <button class="btn-footer" id="btn-next"><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+                </div>
             </div>
         </div>
     </main>
@@ -144,6 +154,7 @@
             </div>
         </div>
     </div>
+    <script src="/JS/paginacao.js"></script>
     <script src="/JS/alocacao.js"></script>
 </body>
 </html>

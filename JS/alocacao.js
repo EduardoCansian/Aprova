@@ -1,8 +1,67 @@
+let alocacoesGlobais = [];
+let paginaAtual = 1;
+const registrosPorPagina = 5;
+async function carregarAlocacoes() {
+    try {
+        const resposta = await fetch('http://192.168.15.4:3000/alocacoes');
+        alocacoesGlobais = await resposta.json();
+        configurarPaginacao(alocacoesGlobais, 5, renderizarTabela);
+
+        const resCountAloc = await fetch('http://192.168.15.4:3000/alocacoes/contagem');
+        const countAloc = await resCountAloc.json();
+        document.getElementById('alocacoes').innerText = countAloc.total;
+
+        const resProfAloc = await fetch('http://192.168.15.4:3000/alocacoes/professores-alocados');
+        const countProfAloc = await resProfAloc.json();
+        document.getElementById('professores-alocados').innerText = countProfAloc.professores_alocados;
+
+    } catch (error) {
+        console.error('Erro ao buscar as alocações:', error)
+    }
+}
+
+function renderizarTabela(alocacoesSeparadas) {
+    const tbody = document.querySelector('tbody');
+    tbody.innerHTML = '';
+
+    alocacoesSeparadas.forEach(alocacao => {
+    const linha = `
+    <tr>
+        <td><div class="turma-semestre">
+                <div id="turma-name">
+                    ${alocacao.nome_turma}
+                </div>
+                <div id="semestre">
+                    ${alocacao.semestre_turma}° Semestre
+                </div>
+            </div>
+        </td>
+        <td><div class="disciplina-cgh">
+                <div id="disciplina-name">
+                    ${alocacao.nome_disciplina}
+                </div>
+                <div id="cgh">
+                    ${alocacao.carga_horaria} horas
+                </div>
+            </div>
+        </td>
+        <td>${alocacao.nome_professor}</td>
+        <td>
+            <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
+            <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
+        </td>
+    </tr>
+    `;
+
+    tbody.innerHTML += linha;
+    });
+}
+
 // Função para buscar as turmas, disciplinas e professores no banco de dados
 async function carregaTurma_Disciplina_Prof() {
     try {
         // Buscando as turmas no back-end
-        const resTurmas = await fetch('http://localhost:3000/turmas'); //Rota do servidor para buscar as turmas
+        const resTurmas = await fetch('http://192.168.15.4:3000/turmas'); //Rota do servidor para buscar as turmas
         const turmas = await resTurmas.json();
         const selectTurma = document.getElementById('input-select-turma') // Acessando o select de Turmas
 
@@ -12,7 +71,7 @@ async function carregaTurma_Disciplina_Prof() {
         })
 
         // Buscando as disciplinas no back-end
-        const resDisciplinas = await fetch('http://localhost:3000/disciplinas'); //Rota do servidor para buscar as disciplinas
+        const resDisciplinas = await fetch('http://192.168.15.4:3000/disciplinas'); //Rota do servidor para buscar as disciplinas
         const disciplinas = await resDisciplinas.json(); // Armazenando os dados das disciplinas no formato json
         const selectDisciplina = document.getElementById('input-select-disciplina'); // Acessando o select de disciplinas
         
@@ -22,7 +81,7 @@ async function carregaTurma_Disciplina_Prof() {
         });
 
         // Buscando os professores no back-end
-        const resProfessores = await fetch('http://localhost:3000/professores'); //Rota do servidor para buscar os alunos
+        const resProfessores = await fetch('http://192.168.15.4:3000/professores'); //Rota do servidor para buscar os alunos
         const professores = await resProfessores.json(); // Armazenando os dados dos professores no formato json
         const selectProfessores = document.getElementById('input-select-professor'); // Acessando o select de professores
         
@@ -81,7 +140,7 @@ btnSaveRegister.onclick = async function() {
     };
 
     try {
-        const resposta = await fetch('http://localhost:3000/alocacoes', {
+        const resposta = await fetch('http://192.168.15.4:3000/alocacoes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -101,34 +160,5 @@ btnSaveRegister.onclick = async function() {
         }
     } catch (error) {
         console.error('Erro ao cadastrar nova Alocação de Aula', error)
-    }
-}
-
-async function carregarAlocacoes() {
-    try {
-        const resposta = await fetch('http://localhost:3000/alocacoes');
-        const alocacoes = await resposta.json();
-
-        const tbody = document.querySelector('tbody');
-        tbody.innerHTML = '';
-
-        alocacoes.forEach(alocacao => {
-
-        const linha = `
-        <tr>
-            <td>${alocacao.nome_turma}</td>
-            <td>${alocacao.nome_disciplina}</td>
-            <td>${alocacao.nome_professor}</td>
-            <td>
-                <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
-                <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
-            </td>
-        </tr>
-        `;
-
-        tbody.innerHTML += linha;
-    });
-    } catch (error) {
-        console.error('Erro ao buscar as alocações:', error)
     }
 }
