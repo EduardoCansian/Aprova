@@ -1,8 +1,62 @@
+let matriculasGlobais = [];
+let paginaAtual = 1;
+const registrosPorPagina = 5;
+
+async function carregarMatriculas() {
+    try {
+        const resposta = await fetch('http://192.168.15.4:3000/matriculas');
+        matriculasGlobais = await resposta.json();
+        configurarPaginacao(matriculasGlobais, 5, renderizarTabela);
+
+        const resCount = await fetch ('http://192.168.15.4:3000/matriculas/contagem');
+        const count = await resCount.json();
+        document.querySelector('.numbers').innerText = count.total;
+        
+    } catch (error) {
+        console.error('Erro ao buscar as matrículas:', error)
+    }
+}
+
+function renderizarTabela(matriculasSeparadas) {
+    const tbody = document.querySelector('tbody');
+    tbody.innerHTML = '';
+
+    matriculasSeparadas.forEach(matricula => {
+        const dataFormatada = new Date(matricula.data_matricula).toLocaleDateString('pt-BR');
+
+        let situacao = '';
+        let classeCor = '';
+
+        if (matricula.status === 'Ativo') {
+            classeCor = 'ativo'
+        } else {
+            classeCor = 'inativo'
+        }
+
+        const linha = `
+        <tr>
+            <td><div id="id">#${matricula.id_matricula}</div></td>
+            <td><div id="nome-email"><div class="nome">${matricula.nome_aluno}</div><div class="email">${matricula.email_aluno}</div></div></td>
+            <td><div id="label-turma"><span class="material-symbols-outlined">school</span>${matricula.nome_turma}</div></td>
+            <td>${dataFormatada}</td>
+            <td><div id="label" class=${classeCor}>${matricula.status}</div></td>
+            <td>
+                <button class="btn-action-table"><span class="material-symbols-outlined" title= "Editar Dados">edit</span></button>
+                <button class="btn-action-table"><span class="material-symbols-outlined" title= "Excluir Matrícula">delete</span></button>
+                <button class="btn-action-table" onclick="window.location.href='boletim.html?id=${matricula.id_matricula}'" title= "Ver Boletim">
+                    <span class="material-symbols-outlined">article_person</span>
+                </button>
+            </td>
+        </tr>
+        `;
+        tbody.innerHTML += linha;
+    });
+}
 // Função para buscar os alunos e turmas no banco de dados
 async function carregarAlunos_Turmas() {
     try {
         // Buscando os alunos no back-end
-        const resAlunos = await fetch('http://localhost:3000/alunos'); //Rota do servidor para buscar os alunos
+        const resAlunos = await fetch('http://192.168.15.4:3000/alunos'); //Rota do servidor para buscar os alunos
         const alunos = await resAlunos.json(); // Armazenando os dados dos alunos no formato json
         const selectAluno = document.getElementById('aluno'); // Acessando o select de Aluno
         
@@ -12,7 +66,7 @@ async function carregarAlunos_Turmas() {
         });
 
         // Buscando as turmas no back-end
-        const resTurmas = await fetch('http://localhost:3000/turmas'); //Rota do servidor para buscar as turmas
+        const resTurmas = await fetch('http://192.168.15.4:3000/turmas'); //Rota do servidor para buscar as turmas
         const turmas = await resTurmas.json();
         const selectTurma = document.getElementById('turma') // Acessando o select de Turmas
 
@@ -74,7 +128,7 @@ btnSaveRegister.onclick = async function() {
     };
 
     try {
-        const resposta = await fetch('http://localhost:3000/matriculas', {
+        const resposta = await fetch('http://192.168.15.4:3000/matriculas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -106,38 +160,3 @@ const menuDropDown = document.getElementById('options-register');
 menuDropDown.onchange = function() {
     window.location.href = this.value;
 };
-
-async function carregarMatriculas() {
-    try {
-        const resposta = await fetch('http://localhost:3000/matriculas');
-        const matriculas = await resposta.json();
-
-        const tbody = document.querySelector('tbody');
-        tbody.innerHTML = '';
-
-        matriculas.forEach(matricula => {
-        const dataFormatada = new Date(matricula.data_matricula).toLocaleDateString('pt-BR');
-
-        const linha = `
-        <tr>
-            <td>#${matricula.id_matricula}</td>
-            <td>${matricula.nome_aluno}</td>
-            <td>${matricula.nome_turma}</td>
-            <td>${dataFormatada}</td>
-            <td>${matricula.status}</td>
-            <td>
-                <button class="btn-action-table"><span class="material-symbols-outlined">edit</span></button>
-                <button class="btn-action-table"><span class="material-symbols-outlined">delete</span></button>
-                <button class="btn-action-table" onclick="window.location.href='boletim.html?id=${matricula.id_matricula}'" title= "Ver Boletim">
-                    <span class="material-symbols-outlined">article_person</span>
-                </button>
-            </td>
-        </tr>
-        `;
-
-        tbody.innerHTML += linha;
-    });
-    } catch (error) {
-        console.error('Erro ao buscar as matrículas:', error)
-    }
-}
