@@ -59,15 +59,21 @@ async function carregarRelatorio() {
             // Define a situação e a classe CSS da cor dinamicamente
             let situacao = '';
             let classeCor = '';
+            let icone = '';
+            let bg = '';
             // Adicionando as faltas de cada matéria no total de faltas no ano
             totalFaltas += dados.faltas_acumuladas;
 
             if (mediaFinal >= 7.0) {
                 situacao = 'Aprovado';
                 classeCor = 'aprovado'; // Classe no CSS (cor verde)
+                icone = '<span class="material-symbols-outlined">check_circle</span>';
+                bg = 'rgba(0, 212, 0, 0.37)'
             } else {
                 situacao = 'Recuperação';
                 classeCor = 'recuperacao'; // (cor amarela ou vermelha)
+                icone = '<span class="material-symbols-outlined">cancel</span>'
+                bg = 'rgba(190, 0, 0, 0.48)'
             }
             situacaoLista.push(situacao)
 
@@ -75,13 +81,17 @@ async function carregarRelatorio() {
             tbody.innerHTML += `
                 <tr>
                     <td>${nomeMateria}</td>
-                    <td>${n1 ? n1 : '-'}</td>
-                    <td>${n2 ? n2 : '-'}</td>
-                    <td>${n3 ? n3 : '-'}</td>
-                    <td>${n4 ? n4 : '-'}</td>
-                    <td><strong>${mediaFinal.toFixed(1)}</strong></td>
-                    <td>${dados.faltas_acumuladas}</td>
-                    <td class="${classeCor}">${situacao}</td>
+                    <td class="nota">${n1 ? n1 : '-'}</td>
+                    <td class="nota">${n2 ? n2 : '-'}</td>
+                    <td class="nota">${n3 ? n3 : '-'}</td>
+                    <td class="nota">${n4 ? n4 : '-'}</td>
+                    <td class="nota"><strong>${mediaFinal.toFixed(1)}</strong></td>
+                    <td class="nota">${dados.faltas_acumuladas}</td>
+                    <td class="${classeCor}">
+                        <div class="situacion" style="background-color:${bg}; border-radius: 15px; padding: 3px">
+                            ${icone}${situacao}
+                        </div>
+                    </td>
                 </tr>
             `;
         });

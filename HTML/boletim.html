@@ -35,10 +35,10 @@
     <main class="main-content">
         <!-- Cabeçalho fixo no conteúdo principal -->
         <header class="header-menu-action">
-            <div class="select-menu-matricula">
-                <h1>Boletim Escolar</h1>
-                <div>
-                    <p>Documento oficial de rendimento pedagógico, frequência e apuração final de reultados do discente</p>
+            <div class="menu-title">
+                <h2>Boletim Escolar</h2>
+                <div class="subtitle">
+                    <p>Documento oficial de rendimento pedagógico, frequência e apuração final de resultados do discente</p>
                 </div>
             </div>
             
@@ -54,29 +54,33 @@
                     <p>JS</p>
                 </div>
                 <div class="info-student">
-                    <p>Joãozinho Silva</p>
-                    <p id="cpf-aluno">CPF: 111.111.111-11</p>
+                    <div class="nome">
+                        <p>Joãozinho Silva</p>
+                    </div>
+                    <div class="cpf">
+                        <p id="cpf-aluno">CPF: 111.111.111-11</p>
+                    </div>
                 </div>
                 <div class="status">
                     <p>MATRÍCULA ATIVA</p>
                 </div>
             </div>
             <div class="body-indicator">
-                <div class="matricula">
+                <div class="box">
                     <div class="label">
-                        <span class="material-symbols-outlined">tag</span>
+                        <span class="material-symbols-outlined">id_card</span>
                         <p>MATRÍCULA</p>
                     </div>
                     <p id="display-matricula">0</p>
                 </div>
-                <div class="turma">
+                <div class="box">
                     <div class="label">
                         <span class="material-symbols-outlined">groups</span>
                         <p>TURMA</p>
                     </div>
                     <p id="display-turma">****</p>
                 </div>
-                <div class="ano-letivo">
+                <div class="box">
                     <div class="label">
                         <span class="material-symbols-outlined">calendar_month</span>
                         <p>ANO LETIVO</p>
@@ -102,12 +106,12 @@
                 <thead>
                     <tr>
                         <th>DISCIPLINA</th>
-                        <th>1° BIM.</th>
-                        <th>2° BIM.</th>
-                        <th>3° BIM.</th>
-                        <th>4° BIM.</th>
-                        <th>MÉDIA FINAL</th>
-                        <th>FALTAS</th>
+                        <th class="nota">1° BIM.</th>
+                        <th class="nota">2° BIM.</th>
+                        <th class="nota">3° BIM.</th>
+                        <th class="nota">4° BIM.</th>
+                        <th class="nota">MÉDIA FINAL</th>
+                        <th class="faltas">FALTAS</th>
                         <th>SITUAÇÃO</th>
                     </tr>
                 </thead>
@@ -115,23 +119,25 @@
                 <tbody>
                     <tr>
                         <td>Matemática</td>
-                        <td>8,5</td>
-                        <td>7,5</td>
-                        <td>9,0</td>
-                        <td>8,0</td>
-                        <td>8,3</td>
-                        <td>4</td>
+                        <td class="nota">8,5</td>
+                        <td class="nota">7,5</td>
+                        <td class="nota">9,0</td>
+                        <td class="nota">8,0</td>
+                        <td class="nota">8,3</td>
+                        <td class="faltas">4</td>
                         <td>Aprovado</td>
                     </tr>
                 </tbody>
             </table>
             <!-- Rodapé da tabela, onde ficam algumas informações gerais -->
             <div class="footer-table">
-                <div class="media">
-                    <p>Média Geral Acumulada: <strong>7,7</strong></p>
-                </div>
-                <div class="faltas">
-                    <p>Total de faltas no ano: <strong>17</strong></p>
+                <div class="media-faltas">
+                    <div class="media">
+                        <p>Média Geral Acumulada: <strong>7,7</strong></p>
+                    </div>
+                    <div class="faltas">
+                        <p>Total de faltas no ano: <strong>17</strong></p>
+                    </div>
                 </div>
                 <div class="situacao">
                     <p>Situação Geral: Aprovado com pendência em Recuperação</p>
