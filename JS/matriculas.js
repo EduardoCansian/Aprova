@@ -100,11 +100,24 @@ cancel.onclick = closeModal;
 
 function closeModal() {
     modalContent.style.display = 'none';
-    document.getElementById('aluno').value = '';
-    document.getElementById('turma').value = '';
+    $('#aluno').val(null).trigger('change');
+    $('#turma').val(null).trigger('change');
     document.getElementById('data-matricula').value = '';
     document.getElementById('status').value = 'Ativo';
 }
+
+$(document).ready(function() {
+    
+    $('#aluno').select2({
+        placeholder: "Selecione...",
+        allowClear: true 
+    });
+
+    $('#turma').select2({
+        placeholder: "Selecione...",
+        allowClear: true
+    });
+});
 
 //Funcionalidade do botão Salvar Matrícula
 const btnSaveRegister = document.querySelector('.btn-save');
@@ -146,7 +159,14 @@ btnSaveRegister.onclick = async function() {
             carregarAlunos_Turmas();
             carregarMatriculas();
 
-            alert('Matrícula salva com sucesso!');
+            const toast = document.getElementById('toast-sucesso');
+            toast.style.display = 'none';
+            toast.style.display = 'block';
+                    
+            setTimeout(function(){ 
+                toast.style.display = 'block';
+                toast.style.display = 'none';
+            }, 3000);
         } else {
             alert('Erro ao salvar a matrícula. Verifique...')
         }

@@ -115,10 +115,30 @@ cancel.onclick = closeModal;
 
 function closeModal() {
     modalContent.style.display = 'none';
-    document.getElementById('input-select-turma').value = '';
-    document.getElementById('input-select-disciplina').value = '';
-    document.getElementById('input-select-professor').value = '';
+    $('#input-select-turma').val(null).trigger('change');
+    $('#input-select-disciplina').val(null).trigger('change');
+    $('#input-select-professor').val(null).trigger('change');
 }
+
+// Aguarda o modal carregar para aplicar o efeito
+$(document).ready(function() {
+    
+    // Transforma os menus normais em Select2 (Com Busca)
+    $('#input-select-turma').select2({
+        placeholder: "Selecione...",
+        allowClear: true // Cria um pequeno "x" para limpar o que o usuário escolheu
+    });
+
+    $('#input-select-disciplina').select2({
+        placeholder: "Selecione...",
+        allowClear: true
+    });
+
+    $('#input-select-professor').select2({
+        placeholder: "Selecione...",
+        allowClear: true
+    });
+});
 
 //Funcionalidade do botão Salvar Matrícula
 const btnSaveRegister = document.querySelector('.btn-save');
@@ -154,7 +174,14 @@ btnSaveRegister.onclick = async function() {
             carregaTurma_Disciplina_Prof();
             carregarAlocacoes();
 
-            alert('Alocação de Aula salva com sucesso!');
+            const toast = document.getElementById('toast-sucesso');
+            toast.style.display = 'none';
+            toast.style.display = 'block';
+                    
+            setTimeout(function(){ 
+                toast.style.display = 'block';
+                toast.style.display = 'none';
+            }, 3000);
         } else {
             alert('Erro ao salvar a Alocação de Aula. Verifique...')
         }

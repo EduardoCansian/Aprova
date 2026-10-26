@@ -33,6 +33,9 @@
     </aside>
     <!-- Conteúdo central -->
     <main class="main-content">
+        <div id="toast-sucesso" class="hidden-toast">
+            <p>Aluno cadastrado com sucesso!</p>
+        </div>
         <!-- Cabeçalho fixo no conteúdo principal -->
         <header class="header-menu-action">
             <div class="select-menu">
@@ -124,11 +127,15 @@
     <div class="modal">
         <div class="form-add">
             <div class="close-box">
-                <span class="close">&times;</span>
+                <span class="material-symbols-outlined close">close</span>
             </div>
             <div class="header-form">
-                <h3>Cadastrar Novo Aluno</h3>
-                <p>Insira os dados cadastrais básicos do estudante para emissão de prontuário acadêmico.</p>
+                <div>
+                    <h3>Cadastrar Novo Aluno</h3>
+                </div>
+                <div>
+                    <p>Insira os dados cadastrais básicos do estudante para emissão de prontuário acadêmico.</p>
+                </div>
             </div>
 
             <div class="input-container">

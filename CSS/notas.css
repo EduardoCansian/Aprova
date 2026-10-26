@@ -96,6 +96,28 @@ img {
     margin: 15px;
 }
 
+.hidden-toast {
+    display: none;
+    position: fixed;
+    left: 50%;
+    background-color: rgba(0, 210, 0, 0.764);
+    color: rgb(0, 77, 0);
+    padding: 16px;
+    border-radius: 8px;
+    top: 20px;
+    min-width: 250px;
+    text-align: center;
+    z-index: 1000;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.4s, transform 0.4s;
+    border: 1px solid rgba(0, 0, 0, 0.06)
+}
+
+.show-toast {
+    display: block;
+}
+
 .header-menu-action {
     background-color: white;
     padding: 20px;

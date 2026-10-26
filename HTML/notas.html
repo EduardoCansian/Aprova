@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/notas.css">
     <link rel="icon" href="/img/Aprova_logo-removebg-preview.png">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <title>Lançamento de Notas</title>
 </head>
 <body>
@@ -33,6 +36,9 @@
     </aside>
     <!-- Conteúdo central -->
     <main class="main-content">
+        <div id="toast-sucesso" class="hidden-toast">
+            <p>Notas lançadas com sucesso!</p>
+        </div>
         <!-- Cabeçalho fixo no conteúdo principal -->
         <header class="header-menu-action">
             <div class="select-menu-matricula">

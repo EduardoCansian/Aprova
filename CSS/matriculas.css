@@ -99,6 +99,28 @@ img {
     overflow-y: auto;
 }
 
+.hidden-toast {
+    display: none;
+    position: fixed;
+    left: 50%;
+    background-color: rgba(0, 210, 0, 0.764);
+    color: rgb(0, 77, 0);
+    padding: 16px;
+    border-radius: 8px;
+    top: 20px;
+    min-width: 250px;
+    text-align: center;
+    z-index: 1000;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.4s, transform 0.4s;
+    border: 1px solid rgba(0, 0, 0, 0.06)
+}
+
+.show-toast {
+    display: block;
+}
+
 .header-menu-action {
     background-color: white;
     padding: 20px;
@@ -150,7 +172,7 @@ h2 {
     margin-bottom: 0;
 }
 
-.select-menu-matricula {
+.title-menu {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -467,12 +489,20 @@ td #label-turma {
     margin-left: 15px;
     width: 100%;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+}
+
+.header-form p {
+    color: #494f55;
+    font-size: 14px;
 }
 
 .input-container {
     display: flex;
     flex-direction: column;
-    margin-top: 5px;
     padding: 15px;
 }
 
@@ -484,7 +514,8 @@ h3 {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    max-width: 300px;
+    max-width: 500px;
+    gap: 5px;
 }
 
 .input-cpf-nascimento, .input-box {

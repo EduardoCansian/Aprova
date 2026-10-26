@@ -17,6 +17,10 @@ async function carregarTurmas_Disciplinas() {
         disciplinas.forEach(disciplina => {
             selectDisciplinas.innerHTML += `<option value="${disciplina.id_disciplina}">${disciplina.nome}</option>`
         });
+
+        $('#select-turma').trigger('change');
+        $('#select-disciplina').trigger('change');
+        $('#select-avaliacao').trigger('change');
         
     } catch (error) {
         console.error('Erro ao buscar turmas/disciplinas', error)
@@ -25,11 +29,10 @@ async function carregarTurmas_Disciplinas() {
 
 document.addEventListener('DOMContentLoaded', carregarTurmas_Disciplinas);
 
-const selectTurma = document.getElementById('select-turma');
-selectTurma.addEventListener('change', carregarNomeAluno);
+$('#select-turma').on('change', carregarNomeAluno);
 
 async function carregarNomeAluno() {
-    const idTurmaSel = selectTurma.value;
+    const idTurmaSel = document.getElementById('select-turma').value;
     if (!idTurmaSel) return;
 
     try {
@@ -121,7 +124,16 @@ async function salvaNotas() {
         });
 
         if (resposta.ok) {
-            alert('Notas salvas com sucesso!');
+            const toast = document.getElementById('toast-sucesso');
+            toast.style.display = 'none';
+            toast.style.display = 'block';
+                    
+            setTimeout(function(){ 
+                toast.style.display = 'block';
+                toast.style.display = 'none';
+            }, 3000);
+            const tbody = document.querySelector('tbody')
+            tbody.innerHTML = '';
         }
         else {
             alert('Erro ao salvar os lançamentos no servidor');
@@ -130,7 +142,26 @@ async function salvaNotas() {
     } catch (error) {
         console.error('Erro ao salvar lançamento de nota e frequência', error)
     }
-}
+}    
+
+$(document).ready(function() {
+    
+    $('#select-turma').select2({
+        placeholder: "Selecione...",
+        allowClear: true 
+    });
+
+    $('#select-disciplina').select2({
+        placeholder: "Selecione...",
+        allowClear: true
+    });
+
+    $('#select-avaliacao').select2({
+        placeholder: "Selecione...",
+        allowClear: true
+    });
+});
+
 const tbodyNotas = document.querySelector('tbody');
 
 tbodyNotas.addEventListener('keydown', function(event) {

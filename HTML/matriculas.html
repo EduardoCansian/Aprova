@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/matriculas.css">
     <link rel="icon" href="/img/Aprova_logo-removebg-preview.png">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <title>Matrículas</title>
 </head>
 <body>
@@ -33,6 +36,9 @@
     </aside>
     <!-- Conteúdo central -->
     <main class="main-content">
+        <div id="toast-sucesso" class="hidden-toast">
+            <p>Matrícula realizada com sucesso!</p>
+        </div>
         <!-- Cabeçalho fixo no conteúdo principal -->
         <header class="header-menu-action">
             <div class="title-menu">
@@ -141,26 +147,25 @@
 
             <div class="input-container">
                 <div class="input-box" id="input-select-aluno">
-                    <p>SELECIONAR ALUNO*</p>
+                    <p>Aluno*</p>
                     <select name="aluno" id="aluno">Selecione</select>
                 </div>
                
                 <div class="input-box" id="vinc-turma">
-                    <p>TURMA VINCULADA*</p>
+                    <p>Turma Vinculada*</p>
                     <select name="turma-vinculada" id="turma"></select>
                 </div>
                 
                 <div class="input-data-status">
                     <div class="input-box" id="input-matricula">
-                        <p>DATA DA MATRÍCULA*</p>
+                        <p>Data da Matrícula*</p>
                         <input id="data-matricula" type="date" placeholder="DD/MM/AAAA">
                     </div>
                     <div class="input-box" id="input-status">
-                        <p>STATUS*</p>
+                        <p>Status*</p>
                         <select name="status" id="status">
                             <option value="Ativo" selected>Ativo</option>
                             <option value="Inativo">Inativo</option>
-                            <option value="Trancado">Trancado</option>
                         </select>
                     </div>
                 </div>

@@ -58,7 +58,9 @@ cancel.onclick = closeModal;
 
 function closeModal() {
     modalContent.style.display = 'none';
-    input.innerText = '';
+    document.getElementById('nome-turma').value = '';
+    document.getElementById('ano-letivo').value = '';
+    document.getElementById('semestre').value = '';
 }
 
 const anoLetivo = document.getElementById('ano-letivo');
@@ -111,7 +113,14 @@ btnSaveRegister.onclick = async function() {
             closeModal();
             carregarTrumas(); //Atualiza a tabela na mesma hora
 
-            alert('Cadastro salvo com sucesso!');
+            const toast = document.getElementById('toast-sucesso');
+            toast.style.display = 'none';
+            toast.style.display = 'block';
+                    
+            setTimeout(function(){ 
+                toast.style.display = 'block';
+                toast.style.display = 'none';
+            }, 3000);
         } else {
             alert('Erro ao salvar o cadastro. Verifique...')
         }

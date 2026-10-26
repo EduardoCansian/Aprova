@@ -62,7 +62,10 @@ cancel.onclick = closeModal;
 
 function closeModal() {
     modalContent.style.display = 'none';
-    input.innerText = '';
+    document.getElementById('nome').value = '';
+    document.getElementById('cpf').value = '';
+    document.getElementById('data-nascimento').value = '';
+    document.getElementById('email').value = '';
 }
 // Abrir o modal de cadastro ao clicar em "Cadastrar Novo Aluno" no dashboard
 const parametrosUrl = new URLSearchParams(window.location.search);
@@ -127,7 +130,14 @@ btnSaveRegister.onclick = async function() {
             closeModal();
             carregarAlunos();
 
-            alert('Cadastro salvo com sucesso!');
+            const toast = document.getElementById('toast-sucesso');
+            toast.style.display = 'none';
+            toast.style.display = 'block';
+                    
+            setTimeout(function(){ 
+                toast.style.display = 'block';
+                toast.style.display = 'none';
+            }, 3000);
         } else {
             alert('Erro ao salvar o cadastro. Verifique se o CPF ou E-mail já existem.')
         }
@@ -141,8 +151,6 @@ const menuDropDown = document.getElementById('options-register');
 menuDropDown.onchange = function() {
     window.location.href = this.value;
 };
-
-
 
 const hint = document.getElementById('hintboxEdit');
 const btnEdit = document.getElementById('editar');
