@@ -206,6 +206,16 @@ h2 {
     outline: none;
 }
 
+.input-search:focus-within {
+    border-color: #003361;
+    box-shadow: 0 0 5px 5px rgba(0, 51, 97, 0.15);
+    transition: 0.3s ease-in-out;
+}
+
+#search {
+    font-size: 15px;
+}
+
 .input-search {
     background-color: #ffffff;
     color: #4b5563;
@@ -299,13 +309,14 @@ h2 {
     border-radius: 0 0 10px 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     justify-content: space-between;
-    min-height: 385px;
+    min-height: 405px;
     background-color: white;
 }
 
 table {
     width: 100%;
     background-color: white;
+    font-family: 'Inter', sans-serif;
 }
 
 thead {
@@ -409,9 +420,8 @@ td #label-turma {
 }
 
 .footer-table {
-    justify-content: flex-end;
     display: flex;
-    margin-bottom: 10px;
+    align-self: flex-end;
 }
 
 .footer-actions {

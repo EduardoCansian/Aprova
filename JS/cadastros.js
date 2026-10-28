@@ -6,7 +6,7 @@ async function carregarAlunos() {
     try {
         const resposta = await fetch('http://localhost:3000/alunos'); //Rota do servidor
         alunosGlobais = await resposta.json(); // Armazenando os dados dos alunos no formato json na variável alunos
-        configurarPaginacao(alunosGlobais, 5, rederizarTabela)
+        configurarPaginacao(alunosGlobais, 5, renderizarTabela)
     
         const resCount = await fetch('http://localhost:3000/alunos/contagem');
         const count = await resCount.json();
@@ -17,7 +17,7 @@ async function carregarAlunos() {
     }
 }
 
-function rederizarTabela(alunosFatiados) {
+function renderizarTabela(alunosFatiados) {
     const tbody = document.querySelector('tbody'); // Acessando a tabela
     tbody.innerHTML = ''; //Limpando os dados teste
 
@@ -163,3 +163,23 @@ btnEdit.addEventListener('mouseenter', () => {
 btnDelete.addEventListener('mouseenter', () => {
     hint.textContent = 'Exluir dados'
 })
+
+
+function pesquisarAluno() {
+    const texto = document.getElementById('search').value.trim().toLocaleLowerCase('pt-BR');
+    const cpfPesquisado = texto.replace(/\D/g, '');
+
+    const alunosFiltrados = alunosGlobais.filter(aluno => {
+        const nome = (aluno.nome || '').toLocaleLowerCase('pt-BR');
+        const cpf = aluno.cpf || '';
+        const cpfNumeros = cpf.replace(/\D/g, '');
+
+        // Compara o nome normalmente e o CPF ignorando pontos/traço,
+        // para aceitar tanto "12345678900" quanto "123.456.789-00".
+        return nome.includes(texto) ||
+            (cpfPesquisado !== '' && cpfNumeros.includes(cpfPesquisado));
+    });
+
+    // O nome da função de renderização é renderizarTabela (com "e" após o "r").
+    configurarPaginacao(alunosFiltrados, registrosPorPagina, renderizarTabela);
+}

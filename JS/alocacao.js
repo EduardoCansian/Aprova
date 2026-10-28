@@ -189,3 +189,17 @@ btnSaveRegister.onclick = async function() {
         console.error('Erro ao cadastrar nova Alocação de Aula', error)
     }
 }
+
+function pesquisarTurmaDisciplinaProf() {
+    const texto = document.getElementById('search').value.trim().toLocaleLowerCase();
+
+    const entidadesFiltradas = alocacoesGlobais.filter(entidade => {
+        const turma = entidade.nome_turma.toLocaleLowerCase();
+        const disciplina = entidade.nome_disciplina.toLocaleLowerCase();
+        const professor = entidade.nome_professor.toLocaleLowerCase();
+
+        return turma.includes(texto) || disciplina.includes(texto) || professor.includes(texto);
+    })
+
+    configurarPaginacao(entidadesFiltradas, registrosPorPagina, renderizarTabela);
+}

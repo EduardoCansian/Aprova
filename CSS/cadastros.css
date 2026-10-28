@@ -183,6 +183,10 @@ option {
     color: #4b5563;
 }
 
+#search {
+    font-size: 15px;
+}
+
 #search:focus {
     outline: none;
 }
@@ -195,6 +199,13 @@ option {
     align-items: center;
     padding: 7px;
     border: 1px solid #d1d5db;
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input-search:focus-within {
+    border-color: #003361;
+    box-shadow: 0 0 5px 5px rgba(0, 51, 97, 0.15);
+    transition: 0.3s ease-in-out;
 }
 
 .btn-add-entity {

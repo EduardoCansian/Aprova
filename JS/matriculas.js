@@ -175,8 +175,16 @@ btnSaveRegister.onclick = async function() {
     }
 }
 
-const menuDropDown = document.getElementById('options-register');
+function pesquisarMatricula() {
+    const texto = document.getElementById('search').value.trim().toLocaleLowerCase('pt-BR');
 
-menuDropDown.onchange = function() {
-    window.location.href = this.value;
-};
+    const matriculasFiltradas = matriculasGlobais.filter(matricula => {
+        const nome = (matricula.nome_aluno || '').toLocaleLowerCase('pt-BR');
+        const turma = (matricula.nome_turma || '').toLocaleLowerCase('pt-BR');
+
+        return nome.includes(texto) || turma.includes(texto);
+    });
+
+    // O nome da função de renderização é renderizarTabela (com "e" após o "r").
+    configurarPaginacao(matriculasFiltradas, registrosPorPagina, renderizarTabela);
+}
