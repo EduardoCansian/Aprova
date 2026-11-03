@@ -295,8 +295,11 @@ table {
     background-color: white;
 }
 
-thead {
-    background-color: #03559c59;
+thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #d9e8f3;
     color: #363636;
 }
 
@@ -314,9 +317,6 @@ th {
     letter-spacing: 0.5px;
     text-align: left;
     padding: 15px 10px;
-    position: sticky;
-    top: 0;
-    z-index: 1;
 }
 tbody {
     background-color: white;
