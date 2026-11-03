@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', carregarRelatorio);
 const btnRelatorio = document.querySelectorAll('.btn-action-side-bar')[5];
 const modal = document.querySelector('.modal');
 const btnClose = document.querySelector('.close');
+const btnCancel = document.querySelector('.btn-cancel')
 
 btnRelatorio.onclick = function() {
     modal.style.display = 'block';
@@ -131,6 +132,16 @@ btnRelatorio.onclick = function() {
 btnClose.onclick = function() {
     modal.style.display = 'none';
 }
+
+btnCancel.onclick = function() {
+    modal.style.display = 'none';
+}
+
+// Transforma os menus normais em Select2 (Com Busca)
+    $('#aluno').select2({
+        placeholder: "Selecione...",
+        allowClear: true // Cria um pequeno "x" para limpar o que o usuário escolheu
+    });
 
 let selectAluno = document.getElementById('aluno');
 

@@ -443,6 +443,15 @@ td:last-child, th:last-child {
     margin-left: 15px;
     width: 100%;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+}
+
+.header-form p {
+    color: #494f55;
+    font-size: 14px;
 }
 
 .input-container {
@@ -459,8 +468,9 @@ h3 {
 .input-box {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     max-width: 300px;
+    gap: 5px;
 }
 
 .input-cpf-nascimento, .input-box {
@@ -474,6 +484,25 @@ h3 {
     max-width: 500px;
     border-radius: 5px;
     border: 1px solid gray;
+}
+
+/* Ajustando o Select2 do aluno no modal */
+#input-select-aluno  {
+    width: 100%;
+    max-width: 400px;
+}
+
+#input-select-aluno .select2-container .select2-selection--single {
+    height: 40px;
+}
+
+#input-select-aluno .select2-container .select2-selection__rendered {
+    line-height: 40px;
+    
+}
+
+#input-select-aluno .select2-container .select2-selection__arrow {
+    height: 40px;
 }
 
 .btn-cadastro {
