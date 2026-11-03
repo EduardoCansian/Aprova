@@ -81,7 +81,17 @@ async function salvaNotas() {
     const tipoAvaliacao = document.getElementById('select-avaliacao').value;
 
     if (!idTurma || !idDisciplina || !tipoAvaliacao) {
-        alert('Por favor, preencha os filtros de TURMA, DISCIPLINA e AVALIAÇÃO no topo');
+        const toast = document.getElementById('toast-erro');
+        toast.style.background = 'rgba(225, 0, 0, 0.75)';
+        toast.style.color = 'rgb(100, 0, 0)'
+        toast.style.left = '35%'
+        toast.style.display = 'none';
+        toast.style.display = 'block';
+                
+        setTimeout(function(){ 
+            toast.style.display = 'block';
+            toast.style.display = 'none';
+        }, 3500);
         return;
     }
     // Captura todas as notas e faltas geradas na tabela
@@ -142,7 +152,15 @@ async function salvaNotas() {
     } catch (error) {
         console.error('Erro ao salvar lançamento de nota e frequência', error)
     }
-}    
+}
+
+const btnCancel = document.querySelector('.btn-cancel');
+
+btnCancel.addEventListener('click', function() {
+    document.querySelectorAll('tbody .input-nota, tbody .input-falta').forEach(input => {
+        input.value = ''
+    });
+})
 
 $(document).ready(function() {
     

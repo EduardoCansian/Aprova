@@ -233,7 +233,8 @@ h1 {
 
 .header-select {
     display: flex;
-    gap: 5px;
+    align-items: center;
+    gap: 7px;
     color: #003361;
 }
 
@@ -315,7 +316,6 @@ th {
     padding: 15px 10px;
     position: sticky;
     top: 0;
-    background-color: #eaf1f7;
     z-index: 1;
 }
 tbody {
